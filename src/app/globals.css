@@ -51,48 +51,48 @@
   }
 
   .dark {
-    --background: 234 62% 30%; /* Dark Navy Blue #1A237E */
-    --foreground: 0 0% 96%; /* Off-white #F5F5F5 */
+    --background: 240 21% 15%; /* Catppuccin Base */
+    --foreground: 227 68% 88%; /* Catppuccin Text */
 
-    --card: 234 60% 35%;
-    --card-foreground: 0 0% 96%;
+    --card: 233 13% 31%; /* Catppuccin Surface1 */
+    --card-foreground: 227 68% 88%; /* Catppuccin Text */
 
-    --popover: 234 60% 32%;
-    --popover-foreground: 0 0% 96%;
+    --popover: 233 13% 31%; /* Catppuccin Surface1 */
+    --popover-foreground: 227 68% 88%; /* Catppuccin Text */
 
-    --primary: 210 98% 73%; /* Desaturated Cyan #77B5FE */
-    --primary-foreground: 234 62% 20%; /* Darker Navy for text on cyan */
+    --primary: 217 91% 76%; /* Catppuccin Blue */
+    --primary-foreground: 240 21% 15%; /* Catppuccin Base */
 
-    --secondary: 234 60% 40%; /* Lighter Navy than background */
-    --secondary-foreground: 0 0% 96%;
+    --secondary: 232 12% 39%; /* Catppuccin Surface2 */
+    --secondary-foreground: 227 68% 88%; /* Catppuccin Text */
 
-    --muted: 234 50% 45%; /* Muted Navy */
-    --muted-foreground: 0 0% 70%; /* Lighter grey for muted text */
+    --muted: 237 16% 23%; /* Catppuccin Surface0 */
+    --muted-foreground: 227 35% 80%; /* Catppuccin Subtext1 */
 
-    --accent: 262 52% 50%; /* Deep Violet #673AB7 */
-    --accent-foreground: 0 0% 96%;
+    --accent: 277 83% 81%; /* Catppuccin Mauve */
+    --accent-foreground: 240 21% 15%; /* Catppuccin Base */
 
-    --destructive: 0 70% 55%;
-    --destructive-foreground: 0 0% 96%;
+    --destructive: 342 82% 75%; /* Catppuccin Red */
+    --destructive-foreground: 240 21% 15%; /* Catppuccin Base */
 
-    --border: 234 50% 50%;
-    --input: 234 50% 45%;
-    --ring: 210 98% 65%; /* Lighter Cyan for focus rings */
+    --border: 229 13% 55%; /* Catppuccin Overlay1 */
+    --input: 237 16% 23%; /* Catppuccin Surface0 */
+    --ring: 217 91% 76%; /* Catppuccin Blue */
     
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: 23 92% 75%; /* Catppuccin Peach */
+    --chart-2: 115 54% 76%; /* Catppuccin Green */
+    --chart-3: 169 57% 73%; /* Catppuccin Teal */
+    --chart-4: 43 89% 83%; /* Catppuccin Yellow */
+    --chart-5: 316 72% 86%; /* Catppuccin Pink */
 
-    --sidebar-background: 234 60% 33%;
-    --sidebar-foreground: 0 0% 96%;
-    --sidebar-primary: 210 98% 73%;
-    --sidebar-primary-foreground: 234 62% 20%;
-    --sidebar-accent: 262 52% 50%;
-    --sidebar-accent-foreground: 0 0% 96%;
-    --sidebar-border: 234 50% 50%;
-    --sidebar-ring: 210 98% 65%;
+    --sidebar-background: 240 21% 12%; /* Catppuccin Mantle */
+    --sidebar-foreground: 227 68% 88%; /* Catppuccin Text */
+    --sidebar-primary: 217 91% 76%; /* Catppuccin Blue */
+    --sidebar-primary-foreground: 240 21% 15%; /* Catppuccin Base */
+    --sidebar-accent: 277 83% 81%; /* Catppuccin Mauve */
+    --sidebar-accent-foreground: 240 21% 15%; /* Catppuccin Base */
+    --sidebar-border: 230 11% 47%; /* Catppuccin Overlay0 */
+    --sidebar-ring: 217 91% 76%; /* Catppuccin Blue */
   }
 }
 
