@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Button }import '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Settings, Users, User, MessageSquare } from 'lucide-react';
 import { SettingsSheet } from '@/components/settings/SettingsSheet'; // Will be created
 

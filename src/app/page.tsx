@@ -1,3 +1,5 @@
+"use client";
+
 import { AppHeader } from '@/components/layout/AppHeader';
 import { NpcList } from '@/components/npc/NpcList';
 import { FactionList } from '@/components/faction/FactionList'; // Placeholder
