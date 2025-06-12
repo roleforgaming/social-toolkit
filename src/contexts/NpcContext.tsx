@@ -51,19 +51,24 @@ const initialNpcs: NPC[] = [
 
 
 export const NpcProvider = ({ children }: { children: ReactNode }) => {
-  const [npcs, setNpcs] = useState<NPC[]>(() => {
-     if (typeof window !== 'undefined') {
-      const savedNpcs = localStorage.getItem('interactiveSagaNpcs');
-      return savedNpcs ? JSON.parse(savedNpcs) : initialNpcs;
-    }
-    return initialNpcs;
-  });
+  const [npcs, setNpcs] = useState<NPC[]>(initialNpcs);
+  const [hasHydrated, setHasHydrated] = React.useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      const savedNpcs = localStorage.getItem('interactiveSagaNpcs');
+      if (savedNpcs) {
+        setNpcs(JSON.parse(savedNpcs));
+      }
+      setHasHydrated(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && hasHydrated) {
       localStorage.setItem('interactiveSagaNpcs', JSON.stringify(npcs));
     }
-  }, [npcs]);
+  }, [npcs, hasHydrated]);
 
   const addNpc = (npcData: Omit<NPC, 'id' | 'avatarUrl'>) => {
     const newNpc: NPC = {
@@ -101,7 +106,7 @@ export const NpcProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <NpcContext.Provider value={{ npcs, addNpc, updateNpc, deleteNpc, getNpcById }}>
-      {children}
+      {hasHydrated ? children : null}
     </NpcContext.Provider>
   );
 };
