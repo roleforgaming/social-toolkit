@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { TOPIC_ROLL_TABLE } from './constants';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -171,4 +172,49 @@ export function endRomance(npc: any): { roll: number, result: string } {
   } else {
     return { roll, result: 'Bad breakup! All relationships broken, Attitude -2.' };
   }
+}
+
+// Draw 3 random tones from the deck (optionally excluding used/forbidden)
+export function drawTones(deck: string[], used: string[] = [], forbidden: string[] = []): string[] {
+  const available = deck.filter(t => !used.includes(t) && !forbidden.includes(t));
+  const shuffled = [...available].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, 3);
+}
+
+// Check if a tone is available for the current attitude/relationship
+export function isToneAvailable(tone: string, npc: any): boolean {
+  // Example: Flirting only if attitude >= -1, Romantic only if isRomance
+  if (tone === 'Flirting' && npc.attitudeLevel < -1) return false;
+  if (tone === 'Romantic' && !npc.isRomance) return false;
+  // Charming/Friendly not with Very Unfriendly
+  if ((tone === 'Charming' || tone === 'Friendly') && npc.attitudeLevel <= -2) return false;
+  return true;
+}
+
+// Get topic (player chooses or roll 1d10)
+export function getTopic(playerInitiates: boolean, chosen?: string): string {
+  if (playerInitiates && chosen) return chosen;
+  const roll = roll1d10();
+  return TOPIC_ROLL_TABLE[roll - 1];
+}
+
+// Placeholder: Get mood (roll 2d10, lookup table)
+export function getMood(): string {
+  // TODO: Implement full 2d10 mood table lookup
+  return 'Neutral';
+}
+
+// Placeholder: Get reaction (roll 1d10, lookup table)
+export function getReaction(): string {
+  // TODO: Implement full reaction table logic
+  const roll = roll1d10();
+  if (roll >= 8) return 'Positive';
+  if (roll >= 5) return 'Somewhat Positive';
+  if (roll >= 3) return 'Somewhat Negative';
+  return 'Negative';
+}
+
+// Track dialogue exchanges (max 3)
+export function canExchange(current: number): boolean {
+  return current < 3;
 }

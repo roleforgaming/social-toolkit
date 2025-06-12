@@ -14,6 +14,8 @@ import {
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { NPC_PLACEHOLDER_AVATAR } from '@/lib/constants';
+import { drawTones, isToneAvailable, getTopic, getMood, getReaction, canExchange } from '@/lib/utils';
+import { TONE_DECK } from '@/lib/constants';
 
 interface DialogueInterfaceDialogProps {
   npc: NPC;
@@ -22,10 +24,43 @@ interface DialogueInterfaceDialogProps {
 }
 
 export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = ({ npc, open, onOpenChange }) => {
-  // Placeholder logic
+  // Dialogue state
+  const [exchange, setExchange] = React.useState(0);
+  const [history, setHistory] = React.useState<{tone: string, reaction: string}[]>([]);
+  const [tones, setTones] = React.useState<string[]>([]);
+  const [chosenTone, setChosenTone] = React.useState<string | null>(null);
+  const [reaction, setReaction] = React.useState<string | null>(null);
+  const [topic, setTopic] = React.useState<string>('');
+  const [mood, setMood] = React.useState<string>('');
+
+  // On open/initiate dialogue
+  React.useEffect(() => {
+    if (open) {
+      setExchange(0);
+      setHistory([]);
+      setChosenTone(null);
+      setReaction(null);
+      setTopic(getTopic(true)); // Assume player initiates for now
+      setMood(getMood());
+      setTones(drawTones(TONE_DECK as unknown as string[]));
+    }
+  }, [open]);
+
+  // Handle tone selection
   const handleToneSelection = (tone: string) => {
-    alert(`Selected tone: ${tone} (not implemented)`);
+    if (!isToneAvailable(tone, npc) || !canExchange(exchange)) return;
+    setChosenTone(tone);
+    const react = getReaction();
+    setReaction(react);
+    setHistory(h => [...h, { tone, reaction: react }]);
+    setExchange(e => e + 1);
+    // Draw new tones for next exchange if not last
+    if (exchange < 2) {
+      setTones(drawTones(TONE_DECK as unknown as string[], [tone]));
+    }
   };
+
+  // Disable dialog close if max exchanges not reached?
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -43,33 +78,41 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
           </div>
           <DialogTitle className="font-headline text-2xl">Dialogue with {npc.name}</DialogTitle>
           <DialogDescription>
-            Current Mood: Neutral | Current Topic: Small Talk (Placeholders)
+            Topic: {topic} | Mood: {mood}
           </DialogDescription>
         </DialogHeader>
-        
         <div className="py-6 space-y-4">
           <div className="p-4 border rounded-md min-h-[100px] bg-background/50">
-            <p className="italic text-muted-foreground">{npc.name} looks at you expectantly.</p>
-            {/* NPC dialogue would appear here */}
+            {history.length === 0 ? (
+              <p className="italic text-muted-foreground">{npc.name} looks at you expectantly.</p>
+            ) : (
+              <ul className="text-sm">
+                {history.map((h, i) => (
+                  <li key={i}>Exchange {i+1}: <b>{h.tone}</b> → <span className="text-primary font-semibold">{h.reaction}</span></li>
+                ))}
+              </ul>
+            )}
           </div>
-
           <div>
             <h3 className="font-semibold mb-2 text-foreground">Your Tones:</h3>
             <div className="flex flex-wrap gap-2">
-              {["Friendly", "Neutral", "Assertive", "Sarcastic (Wildcard)"].map(tone => (
-                <Button key={tone} variant="outline" onClick={() => handleToneSelection(tone)}>
+              {tones.map(tone => (
+                <Button key={tone} variant="outline" onClick={() => handleToneSelection(tone)}
+                  disabled={!isToneAvailable(tone, npc) || !!chosenTone || !canExchange(exchange)}
+                  className={!isToneAvailable(tone, npc) ? 'opacity-50 cursor-not-allowed' : ''}
+                >
                   {tone}
                 </Button>
               ))}
             </div>
           </div>
-
           <div className="p-4 border rounded-md bg-background/50">
             <h4 className="font-semibold text-foreground">NPC Reaction:</h4>
-            <p className="text-sm text-muted-foreground">Awaiting your response... (Reaction will appear here)</p>
+            <p className="text-sm text-muted-foreground">
+              {reaction ? reaction : 'Awaiting your response... (Reaction will appear here)'}
+            </p>
           </div>
         </div>
-
         <DialogFooter>
           <DialogClose asChild>
             <Button type="button" variant="destructive">End Dialogue</Button>

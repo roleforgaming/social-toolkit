@@ -24,3 +24,35 @@ export const RELATIONSHIP_STATUS_ICONS = {
 export const FACTION_PLACEHOLDER_ICON = "Users";
 export const NPC_PLACEHOLDER_AVATAR = "https://placehold.co/100x100.png";
 export const FACTION_PLACEHOLDER_BANNER = "https://placehold.co/300x100.png";
+
+// LET'S TALK! Dialogue Engine Core Tables
+export const TONE_DECK = [
+  "Friendly",
+  "Neutral",
+  "Assertive",
+  "Charming",
+  "Sarcastic",
+  "Humorous",
+  "Questioning",
+  "Flirting",
+  "Romantic"
+] as const;
+
+// Topic Roll Table (1d10)
+export const TOPIC_ROLL_TABLE = [
+  "Greetings",
+  "Small Talk",
+  "Rumors",
+  "Personal Matters",
+  "Quests",
+  "Factions",
+  "Requests",
+  "Opportunities",
+  "Warnings",
+  "Farewells"
+];
+
+// Placeholder for Mood and Reaction tables (to be filled in next steps)
+export const MOOD_ROLL_TABLE: string[][] = [];
+export const REACTION_ROLL_TABLE: string[][] = [];
+export const NPC_REACTION_TABLE: Record<string, string[]> = {};
