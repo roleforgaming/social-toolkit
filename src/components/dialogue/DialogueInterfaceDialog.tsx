@@ -14,7 +14,7 @@ import {
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { NPC_PLACEHOLDER_AVATAR } from '@/lib/constants';
-import { drawTones, isToneAvailable, getTopic, getMood, getReaction, canExchange } from '@/lib/utils';
+import { drawTones, isToneAvailable, getTopic, getMood, getReaction, getNpcReaction, canExchange } from '@/lib/utils';
 import { TONE_DECK } from '@/lib/constants';
 
 interface DialogueInterfaceDialogProps {
@@ -26,12 +26,22 @@ interface DialogueInterfaceDialogProps {
 export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = ({ npc, open, onOpenChange }) => {
   // Dialogue state
   const [exchange, setExchange] = React.useState(0);
-  const [history, setHistory] = React.useState<{tone: string, reaction: string}[]>([]);
+  const [history, setHistory] = React.useState<{tone: string, reaction: string, outcome: string}[]>([]);
   const [tones, setTones] = React.useState<string[]>([]);
   const [chosenTone, setChosenTone] = React.useState<string | null>(null);
   const [reaction, setReaction] = React.useState<string | null>(null);
+  const [outcome, setOutcome] = React.useState<string | null>(null);
   const [topic, setTopic] = React.useState<string>('');
   const [mood, setMood] = React.useState<string>('');
+
+  // Helper: filter tone deck for optional tones
+  function getAvailableToneDeck() {
+    return (TONE_DECK as unknown as string[]).filter(tone => {
+      if (tone === 'Flirting' && npc.attitudeLevel < -1) return false;
+      if (tone === 'Romantic' && !npc.isRomance) return false;
+      return true;
+    });
+  }
 
   // On open/initiate dialogue
   React.useEffect(() => {
@@ -40,9 +50,10 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
       setHistory([]);
       setChosenTone(null);
       setReaction(null);
+      setOutcome(null);
       setTopic(getTopic(true)); // Assume player initiates for now
-      setMood(getMood());
-      setTones(drawTones(TONE_DECK as unknown as string[]));
+      setMood(getMood(npc.attitudeLevel));
+      setTones(drawTones(getAvailableToneDeck()));
     }
   }, [open]);
 
@@ -50,17 +61,29 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
   const handleToneSelection = (tone: string) => {
     if (!isToneAvailable(tone, npc) || !canExchange(exchange)) return;
     setChosenTone(tone);
-    const react = getReaction();
-    setReaction(react);
-    setHistory(h => [...h, { tone, reaction: react }]);
+    // Mood effect placeholder: could modify outcome here
+    const outcome = getReaction(npc.attitudeLevel);
+    setOutcome(outcome);
+    const npcReact = getNpcReaction(tone, outcome);
+    setReaction(npcReact);
+    setHistory(h => [...h, { tone, reaction: npcReact, outcome }]);
     setExchange(e => e + 1);
     // Draw new tones for next exchange if not last
     if (exchange < 2) {
-      setTones(drawTones(TONE_DECK as unknown as string[], [tone]));
+      setTones(drawTones(getAvailableToneDeck(), [tone]));
     }
   };
 
-  // Disable dialog close if max exchanges not reached?
+  // Reset chosenTone/reaction for next exchange
+  React.useEffect(() => {
+    if (chosenTone && exchange < 3) {
+      setTimeout(() => {
+        setChosenTone(null);
+        setReaction(null);
+        setOutcome(null);
+      }, 800);
+    }
+  }, [chosenTone, exchange]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -88,7 +111,7 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
             ) : (
               <ul className="text-sm">
                 {history.map((h, i) => (
-                  <li key={i}>Exchange {i+1}: <b>{h.tone}</b> → <span className="text-primary font-semibold">{h.reaction}</span></li>
+                  <li key={i}>Exchange {i+1}: <b>{h.tone}</b> → <span className="text-primary font-semibold">{h.reaction}</span> <span className="text-xs text-muted-foreground">({h.outcome})</span></li>
                 ))}
               </ul>
             )}
@@ -109,7 +132,7 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
           <div className="p-4 border rounded-md bg-background/50">
             <h4 className="font-semibold text-foreground">NPC Reaction:</h4>
             <p className="text-sm text-muted-foreground">
-              {reaction ? reaction : 'Awaiting your response... (Reaction will appear here)'}
+              {reaction ? reaction + (outcome ? ` (${outcome})` : '') : 'Awaiting your response... (Reaction will appear here)'}
             </p>
           </div>
         </div>
