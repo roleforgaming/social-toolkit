@@ -52,25 +52,24 @@ export const SettingsSheet: React.FC<SettingsSheetProps> = ({ children }) => {
             />
           </div>
 
-          <div className="space-y-2 rounded-lg border p-4">
-            <Label htmlFor="wildcard-tone" className="text-base text-foreground">Select Wildcard Tone</Label>
-            <Select
-              value={selectedWildcardTone || ""}
-              onValueChange={(value) => setSelectedWildcardTone(value as WildcardTone || null)}
+          <div className="flex items-center justify-between rounded-lg border p-4">
+            <div className="space-y-0.5">
+              <Label htmlFor="wildcard-tone" className="text-base text-foreground">
+                Wildcard Tone
+              </Label>
+              <span className="text-xs text-muted-foreground">This tone will be duplicated in your deck and can force special outcomes.</span>
+            </div>
+            <select
+              id="wildcard-tone"
+              className="ml-4 rounded border px-2 py-1 text-foreground bg-background"
+              value={selectedWildcardTone ?? ''}
+              onChange={e => setSelectedWildcardTone(e.target.value ? e.target.value as any : null)}
             >
-              <SelectTrigger id="wildcard-tone" className="w-full bg-input text-foreground">
-                <SelectValue placeholder="Select a wildcard tone" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="">None</SelectItem>
-                {WILDCARD_TONES.map(tone => (
-                  <SelectItem key={tone} value={tone}>{tone}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <p className="text-sm text-muted-foreground">
-              This tone will be added to your dialogue options.
-            </p>
+              <option value="">None</option>
+              {WILDCARD_TONES.map(tone => (
+                <option key={tone} value={tone}>{tone}</option>
+              ))}
+            </select>
           </div>
         </div>
         <SheetFooter className="mt-auto">
