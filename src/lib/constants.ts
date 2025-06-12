@@ -52,7 +52,45 @@ export const TOPIC_ROLL_TABLE = [
   "Farewells"
 ];
 
-// Placeholder for Mood and Reaction tables (to be filled in next steps)
-export const MOOD_ROLL_TABLE: string[][] = [];
-export const REACTION_ROLL_TABLE: string[][] = [];
-export const NPC_REACTION_TABLE: Record<string, string[]> = {};
+// Mood Roll Table (2d10, 10x5, columns: Attitude -2 to +2)
+export const MOOD_ROLL_TABLE: string[][] = [
+  ["Angry", "Angry", "Grumpy", "Nitpicking", "Self-absorbed"],
+  ["Defiant", "Harsh", "Suspicious", "Dubitative", "Inquisitive"],
+  ["Harsh", "Grumpy", "Impatient", "Self-absorbed", "Pragmatic"],
+  ["Arrogant", "Suspicious", "Nitpicking", "Chatty", "Chatty"],
+  ["Grumpy", "Ironic", "Self-absorbed", "Inquisitive", "Fair"],
+  ["Ironic", "Dubitative", "Chatty", "Fair", "Patient"],
+  ["Suspicious", "Skeptical", "Fair", "Fair", "Patient"],
+  ["Sarcastic", "Impatient", "Negotiator", "Patient", "Empathic"],
+  ["Skeptical", "Dubitative", "Pragmatic", "Empathic", "Sympathetic"],
+  ["Dubitative", "Negotiator", "Diplomatic", "Sympathetic", "Helpful"]
+];
+
+// Reaction Roll Table (1d10, 5 columns for Attitude -2 to +2)
+// Each column: [Positive, Somewhat Positive, Somewhat Negative, Negative]
+export const REACTION_ROLL_TABLE: string[][] = [
+  // Attitude -2 (Very Unfriendly)
+  ["Negative", "Negative", "Somewhat Negative", "Somewhat Negative", "Somewhat Negative", "Somewhat Negative", "Somewhat Positive", "Somewhat Positive", "Positive", "Positive"],
+  // Attitude -1 (Unfriendly)
+  ["Negative", "Somewhat Negative", "Somewhat Negative", "Somewhat Negative", "Somewhat Positive", "Somewhat Positive", "Somewhat Positive", "Positive", "Positive", "Positive"],
+  // Attitude 0 (Neutral)
+  ["Somewhat Negative", "Somewhat Negative", "Somewhat Negative", "Somewhat Positive", "Somewhat Positive", "Somewhat Positive", "Positive", "Positive", "Positive", "Positive"],
+  // Attitude +1 (Friendly)
+  ["Somewhat Negative", "Somewhat Negative", "Somewhat Positive", "Somewhat Positive", "Somewhat Positive", "Positive", "Positive", "Positive", "Positive", "Positive"],
+  // Attitude +2 (Very Friendly)
+  ["Somewhat Positive", "Somewhat Positive", "Somewhat Positive", "Positive", "Positive", "Positive", "Positive", "Positive", "Positive", "Positive"]
+];
+
+// NPC Reaction Table (Tone x Outcome)
+// Example: { "Friendly": ["Happy", "Neutral", "Disagreement", "Hostile"] }
+export const NPC_REACTION_TABLE: Record<string, string[]> = {
+  Friendly: ["Happy", "Neutral", "Disagreement", "Hostile"],
+  Neutral: ["Neutral", "Neutral", "Disagreement", "Hostile"],
+  Assertive: ["Impressed", "Neutral", "Disagreement", "Hostile"],
+  Charming: ["Charmed", "Neutral", "Disagreement", "Hostile"],
+  Sarcastic: ["Amused", "Neutral", "Disagreement", "Hostile"],
+  Humorous: ["Laughter", "Neutral", "Disagreement", "Hostile"],
+  Questioning: ["Insightful", "Neutral", "Disagreement", "Hostile"],
+  Flirting: ["Flattered", "Neutral", "Disagreement", "Hostile"],
+  Romantic: ["Touched", "Neutral", "Disagreement", "Hostile"]
+};
