@@ -3,7 +3,8 @@
 import type { NPC } from '@/types/core';
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
-import { NPC_PLACEHOLDER_AVATAR, RELATIONSHIP_STAGES, ATTITUDE_LEVELS } from '@/lib/constants';
+import { NPC_PLACEHOLDER_AVATAR, RELATIONSHIP_STAGES } from '@/lib/constants';
+import { clampAttitudeLevel, clampAR, AR_MIN_DEFAULT, AR_MAX_DEFAULT, CONDITIONS } from '@/lib/utils';
 
 // Ensure uuid is installed: npm install uuid @types/uuid
 
@@ -69,13 +70,23 @@ export const NpcProvider = ({ children }: { children: ReactNode }) => {
       ...npcData,
       id: uuidv4(),
       avatarUrl: NPC_PLACEHOLDER_AVATAR,
+      attitudeLevel: clampAttitudeLevel(npcData.attitudeLevel ?? 0),
+      ar: clampAR(npcData.ar ?? 0, AR_MIN_DEFAULT, AR_MAX_DEFAULT),
+      conditions: (npcData.conditions ?? []).filter(c => CONDITIONS.includes(c as any)),
     };
     setNpcs(prevNpcs => [...prevNpcs, newNpc]);
   };
 
   const updateNpc = (id: string, updates: Partial<NPC>) => {
     setNpcs(prevNpcs =>
-      prevNpcs.map(npc => (npc.id === id ? { ...npc, ...updates } : npc))
+      prevNpcs.map(npc => {
+        if (npc.id !== id) return npc;
+        // Clamp attitude/ar and filter conditions
+        const attitudeLevel = updates.attitudeLevel !== undefined ? clampAttitudeLevel(updates.attitudeLevel) : npc.attitudeLevel;
+        const ar = updates.ar !== undefined ? clampAR(updates.ar, AR_MIN_DEFAULT, AR_MAX_DEFAULT) : npc.ar;
+        const conditions = updates.conditions !== undefined ? updates.conditions.filter(c => CONDITIONS.includes(c as any)) : npc.conditions;
+        return { ...npc, ...updates, attitudeLevel, ar, conditions };
+      })
     );
   };
 
