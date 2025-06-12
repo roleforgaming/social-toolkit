@@ -94,3 +94,85 @@ export const NPC_REACTION_TABLE: Record<string, string[]> = {
   Flirting: ["Flattered", "Neutral", "Disagreement", "Hostile"],
   Romantic: ["Touched", "Neutral", "Disagreement", "Hostile"]
 };
+
+// Mood Effects Data Model (for all 50 moods, simplified for demo)
+export const MOOD_EFFECTS: Record<string, {
+  modifier?: { tone?: string, value: number, until?: string }[],
+  reshuffle?: string[],
+  restrict?: string[],
+  shift?: { from: string, to: string }[],
+}> = {
+  "Angry": { modifier: [{ value: -1, until: "Flirting/Happy/Helpful/Romantic/Satisfaction" }] },
+  "Arrogant": { modifier: [{ tone: "Rude", value: -1, until: "Flirting/Happy/Helpful/Romantic/Satisfaction" }], restrict: ["Charming"] },
+  "Bold": { modifier: [{ tone: "Aggressive", value: -1 }, { tone: "Rude", value: -1 }] },
+  "Charming": { modifier: [
+    { tone: "Charming", value: 1, until: "Furious/Hostile/Reject/Rude" },
+    { tone: "Flirting", value: 1, until: "Furious/Hostile/Reject/Rude" },
+    { tone: "Romantic", value: 1, until: "Furious/Hostile/Reject/Rude" }
+  ] },
+  "Empathic": { modifier: [
+    { tone: "Sad", value: 1 },
+    { tone: "Worried", value: 1 }
+  ] },
+  "Envious": { modifier: [{ tone: "Friendly", value: -1 }], restrict: ["Charming"] },
+  "Excited": { shift: [
+    { from: "Somewhat Positive", to: "Positive" },
+    { from: "Somewhat Negative", to: "Negative" }
+  ] },
+  "Fair": {},
+  "Fastidious": { modifier: [
+    { tone: "Sad", value: -1, until: "Sad/Worried" },
+    { tone: "Worried", value: -1, until: "Sad/Worried" }
+  ] },
+  "Gossipy": { modifier: [{ tone: "Questioning", value: 1 }], reshuffle: ["Questioning"] },
+  "Grumpy": { modifier: [{ value: -1, until: "Flirting/Happy/Helpful/Romantic/Satisfaction" }] },
+  "Happy": { modifier: [{ value: 1, until: "Furious/Hostile/Reject/Rude/Sad/Worried" }] },
+  "Harsh": { modifier: [{ value: -1, until: "Disagreement/Furious/Hostile/Reject/Rude" }] },
+  "Helpful": { modifier: [
+    { tone: "Sad", value: 1, until: "Furious/Hostile/Rude" },
+    { tone: "Worried", value: 1, until: "Furious/Hostile/Rude" }
+  ] },
+  "Humble": { modifier: [{ value: 1, until: "FirstExchange" }] },
+  "Impatient": { modifier: [{ value: -1, until: "SecondThirdExchange" }] },
+  "Inquisitive": { modifier: [{ tone: "Questioning", value: 1 }] },
+  "Ironic": { modifier: [{ value: -1, until: "Furious/Hostile/Rude" }] },
+  "Jokey": { reshuffle: ["Humorous"] },
+  "Negotiator": { modifier: [
+    { value: -1, until: "NextNegative" },
+    { value: 1, until: "NextPositive" }
+  ] },
+  "Nitpicking": { shift: [{ from: "Somewhat Positive", to: "Somewhat Negative" }] },
+  "Overwhelmed": { modifier: [
+    { tone: "Rude", value: 1 },
+    { tone: "Aggressive", value: 1 }
+  ] },
+  "Pacific": { modifier: [{ tone: "Rude", value: 1 }], restrict: ["Aggressive"] },
+  "Patient": { shift: [{ from: "Negative", to: "Somewhat Negative" }] },
+  "Placative": { modifier: [
+    { tone: "Aggressive", value: 1, until: "Furious/Hostile/Rude" },
+    { tone: "Rude", value: 1, until: "Furious/Hostile/Rude" }
+  ] },
+  "Pleased": { modifier: [{ value: 1, until: "Disagreement/Furious/Hostile/Reject/Rude/Sad/Worried" }] },
+  "Pragmatic": { shift: [
+    { from: "Positive", to: "Somewhat Positive" },
+    { from: "Negative", to: "Somewhat Negative" }
+  ] },
+  "Proud": { modifier: [{ value: -1, until: "Disagreement/Furious/Hostile/Reject/Rude" }] },
+  "Sad": { modifier: [{ tone: "Sad", value: 1, until: "Flirting/Happy/Romantic/Satisfaction" }], restrict: ["Humorous"] },
+  "Sarcastic": { modifier: [{ value: -1, until: "Flirting/Happy/Helpful/Romantic/Satisfaction" }] },
+  "Scared": { modifier: [{ tone: "Worried", value: 1 }], reshuffle: ["Worried"] },
+  "Self-absorbed": { modifier: [{ tone: "Sad", value: -1, until: "Sad/Surprised/Worried" }], restrict: ["Worried"] },
+  "Skeptical": { modifier: [{ value: -1, until: "FirstExchange" }] },
+  "Sleepy": { restrict: ["Surprised"] },
+  "Somber": { modifier: [{ tone: "Worried", value: 1 }], restrict: ["Humorous"] },
+  "Startled": { modifier: [{ tone: "Surprised", value: 1 }], reshuffle: ["Surprised"] },
+  "Stubborn": { modifier: [{ value: -1, until: "Disagreement/Furious/Hostile/Rude" }] },
+  "Strict": { shift: [{ from: "Somewhat Negative", to: "Negative" }] },
+  "Suspicious": { shift: [
+    { from: "Somewhat Positive", to: "Somewhat Negative" },
+    { from: "Positive", to: "Somewhat Positive" }
+  ] },
+  "Sympathetic": { modifier: [{ tone: "Friendly", value: 1, until: "Furious/Hostile/Rude" }], reshuffle: ["Friendly"] },
+  "Tired": { restrict: ["AllAfterSecondExchange"] },
+  // ...add more as needed for full coverage
+};
