@@ -1,0 +1,481 @@
+LET’S TALK! STAND-ALONE NPC DIALOGUE SYSTEM FOR SOLO ROLEPLAYING BY DR. GERALD RAVENPIE 2024
+
+--- Page Break ---
+TABLE OF CONTENTS
+GETTING STARTED ........................................... 3
+WHEN TO USE ................................................ 3
+WHAT YOU NEED ........................................... 3
+A BIT OF BACKGROUND ................................. 3
+GETTING SOCIAL! .......................................... 3
+
+THE SYSTEM ........................................................ 4
+GREETINGS ..................................................... 4
+TONES & REACTIONS ..................................... 4
+EXCHANGES ................................................... 6
+AFTERMATH ................................................... 6
+
+OPTIONAL RULES .............................................. 7
+PERSUADING .................................................. 7
+LYING ............................................................. 7
+THREE-SIDED DIALOGUES .............................. 7
+WILDCARD TONE ........................................... 7
+ERR…HMM… TONE ........................................ 8
+PARTY DIALOGUES ......................................... 8
+HARDCORE MODE ......................................... 8
+
+ADVANCED MOODS ........................................... 9
+READING THE ROOM .................................... 9
+ASSIGNING MOODS ...................................... 9
+MECHANICAL EFFECTS ................................ 10
+MOODS EFFECTS ........................................ 11
+
+CHOUCROUTE FUN TAG! - A FULL DIALOGUE EXAMPLE ..................................... 13
+THE STORY SO FAR… ................................... 13
+GREETINGS .................................................. 13
+FIRST EXCHANGE ......................................... 13
+SECOND EXCHANGE .................................... 14
+INTERLUDE .................................................. 14
+THIRD EXCHANGE ....................................... 14
+AFTERMATH ................................................ 15
+
+Version 0.04 By Dr. Gerald Ravenpie, 2024
+
+First, the usual comment: do whatever you want with the text in this document, except making money or doing something illegal or immoral. By the way, that 'illegal or immoral' clause is just a tongue-in-cheek comment (based on a 90s Spanish song) that has probably run its course already. So do not take it too seriously! Second, I want to thank Martin Proctor, whose comments (and encouraging words!) inspired me to update this document, and Reddit user u/gufted, whose application of these rules inspired me to introduce the 'hardcore mode' as an official rule! (^ __ ^)
+
+--- Page Break ---
+GETTING STARTED
+LET’S TALK! is a stand-alone dialogue system for solo roleplaying, designed to be used with any other RPG ruleset. This system is inspired by classic tree-based dialogues in video games; to be precise, by those video games where dialogue options are represented by a single word, short phrase, or even an icon. Luckily, this won't be one of those games where the writers put words in the mouth of your character that you never, ever, would use, or even worse, mislead you... because in this case, you are the one who selects and gives a meaning to those words!
+
+WHEN TO USE
+The Dialogue rules in this Add-on are designed to give you inspiration when doing a conversation with an NPC. They don't tell you what they say, but how they do it as a reaction to whatever you have said to them, what they think about you, and how they're feeling at that time.
+
+Nevertheless, these rules stop being useful when they get in the way instead of helping, and those times you should just ignore them. For example, you don't need to stop to roll to establish the topic of a dialogue or the Mood of an NPC when you are continuing a previous (and recent) conversation where all those aspects were already established. Nor should you use these rules with every single NPC you meet, especially if that NPC has no relevance to the plot or nothing interesting to say. Going back to the video game metaphor, if you meet an NPC whose only line is "I'm starting to take lessons at piano" (potentially changing to "I've progressed a lot at playing the piano" if you visit the same place later), then the full Dialogue rules are not required.
+
+Finally, when an NPC is a member of your party, you don't have to start a Dialogue every time you want that NPC to say something, or when you want to answer a question or make a petition. One of the funny parts of having people traveling with you is hearing their idle chat (with you, or among themselves), even if there are times they may get on your nerves! So just keep these Dialogue mechanics for the relevant moments; also, feel free to use parts of these mechanics as an inspiration source (e.g., as a substitute for the classical 'reaction roll' if the system you're using lacks one).
+
+WHAT YOU NEED
+You need two 10-sided dice, but using only one also works: the only time you need to roll two dice is to select the column and the row of one certain table, so you can do that step-by-step. Also, you need the tone cards included at the end of this document to build a Tone Deck at the beginning of each Dialogue. Finally, you need a way to establish how your relationship with an NPC is. If this concept is treated just narratively in your used RPG, just assign one Attitude level by following the guidelines in that game (or just use your gut feeling if there are no guidelines). If it's based on some game trait, you should choose the Attitude that better fits the original tag, descriptor, level, or whatever, from the original system.
+
+A BIT OF BACKGROUND
+This Dialogue system is a stand-alone version of the one found in the VISOR PG (available at https://ucmeumm.blogspot.com/p/visorpg-videogame-ish-solo-roleplaying.html). It was an already quite 'stand-alone'-ish system to begin with, but it still included some mentions to other mechanics that have been omitted here. Nevertheless, at the time this version of LET’S TALK! hit the press (that's metaphorical!), it includes refinements and additions to its original source.
+
+If you came from a previous version of this document, the main changes have been a) an expansion of the Advanced Moods optional rules, b) more detailed descriptions of the tones and reactions, and c) a full-fledged Dialogue example. Also, the results for the Reaction Roll table have been reversed so 'rolling high' corresponds to 'better results', and they now use the 'worded' answers instead of a number you must translate to the former.
+
+GETTING SOCIAL!
+This Add-on only covers one aspect of social relationships (or 'the social pillar', as cool kids call it nowadays), namely 'talking with people'. Now, you may be interested in other aspects, as making friends (or losing them!), romancing, dealing with Factions, etc. Well, good news, there's another stand-alone Add-on which does just that, KEEPING CONTACT!, which even includes a compatibility patch to use it along LET’S TALK! You can find it on this page, close to the one you may have found this Add-on: https://ucmeumm.blogspot.com/2022/12/keeping-contact-standalone-social.html
+
+--- Page Break ---
+THE SYSTEM
+To summarize this system in a nutshell, a Dialogue with an NPC has the following stages:
+
+*   **Greetings.** Where the initial Attitude of the NPC (both regarding you and their general Mood) and the reasons behind that Dialogue are established.
+*   **Exchanges.** Where you resolve the talky part, by selecting specific Tones and getting Reactions based on those Tones, how friendly the NPC is to begin with, and a bit of randomness.
+*   **Aftermath.** Where you decide if the Dialogue has some effect on your relationship with that NPC, if things got so ugly that you now must fight, and any other further consequence.
+
+GREETINGS
+NPCs are polite enough to greet you, even if that politeness may take the form of just a 'Hey, listen!', 'You, N'wah!' or 'Grah, interloper!'. You should do the same when you're the one who starts a Dialogue, so its first step is this Greetings part where you establish a) what's the NPC's initial Attitude, b) the Dialogue's Topic, and c) the NPC's Mood. The starting ones, at least, as they could change before the end.
+
+ATTITUDE
+Even before it begins, a Dialogue looks quite different if the NPC you're talking to already has a metaphorical (or literal!) knife between teeth when seeing you, or if that NPC is your BFF. Thus, before anything else, you must establish the Attitude of that NPC from one of the following: Very Unfriendly, Unfriendly, Neutral, Friendly, Very Friendly. You can use your previous story with that NPC if you've already met, or just use the most fitting for the current situation in the case of a complete stranger.
+
+Note that the Attitude 'I hate, despise or fear you so much that I don't want to talk to you, ever' may also be on the table… but, in this case, you cannot expect a proper Dialogue with that NPC: they will probably attack you, insult you, blatantly ignore you, or flee before you can even say, 'Hi!'.
+
+TOPIC
+Once it's been established that the NPC at least wants to talk with you, the question is…about what? If you are the one approaching the NPC, you just decide the Topic, even if it's something as simple as just wanting to say 'Hi!'. On the other hand, if the NPC is approaching you for a little talk, make a d10 roll to decide why, checking the result against the Topic Roll Table. Remember that if the circumstances already point in one direction (e.g., a guard that finds you in a restricted area isn't looking for idle chat), you don't need to make that roll: reserve it for those times you have nothing in mind yet.
+
+MOOD
+Regardless of who is approaching whom, you use the Mood Roll Table to know the initial Mood of that NPC: roll 1d10 to select the row and another one for the column. This affects how that NPC greets you, but also serves as a guide for how the rest of the Dialogue would go. Also, this result can give you some clues about the nature of those news, reminders, petitions, demands or opportunities they bring with them. In case of strangers, you can use the result to summarize their full personalities, instead of just how they're feeling at that moment. As an alternative, if you already know the personality of an NPC, you may just randomly select how that NPC is feeling at that specific moment based on this. E.g., if you know that one NPC is a bit cowardly but also quite arrogant, you could randomly select which of these two aspects dominates at any given time (for example selecting between the Arrogant and Scared Moods).
+
+Note that the columns in this table are notable biased, being the leftmost the most negative in nature, and the rightmost the most positive. You may consider this to select the column instead of rolling it, if you expect that the Mood of a specific NPC should tend towards the positive, negative, or neutral side.
+
+BEYOND THE BASICS
+The guidelines about Moods in this section are at its most basic level, being 100% based on narrative effects. A further section in this document expands these rules, including specific mechanical effects for each Mood and discussing ways to assign them.
+
+TONES & REACTIONS
+There are thirteen tones described here: nine common tones, two with special availability rules, and two optional ones with specific uses. Each tone (with one exception) has a card associated with it. In this section, you can find the meaning of each tone… but, as it will be seen, there's plenty of room for interpretation in most cases.
+
+The first nine tones are the default ones you always include in the Tone Deck. Note that there's no 'neutral' tone among them: each time you must select a tone should symbolize a potential turning point in the Dialogue, where each option would have consequences. Thus, any filler and padding lines of text would be inserted between these relevant moments, for as long as you desire.
+
+**Aggressive.** You speak in a demanding or threatening way, or in a violent way if you really dislike the NPC. There's not much room for compromise here: this is the worst tone you could use with anyone!
+**Charming.** You try to look cool or talk about something you find cool. Or maybe you try to flatter the NPC. This tone cannot be used with someone you don't get along with at all (i.e., someone with a Very Unfriendly Attitude).
+**Friendly.** You talk about something heartwarming, offer your help to the NPC, etc. When talking to someone you don't get along too much, it can represent an olive branch. When talking with someone you don't get along at all, this is not even possible: that olive branch should be based in actions instead of words, or, at least, be preceded by them (i.e., you must do something to make that Attitude at least 'Unfriendly').
+**Humorous.** You talk about something funny, tell a joke, or use a light tone. This tone assumes you try to laugh with someone, not at someone; if you get along with the NPC, on the other hand, it can also include friendly (and, usually, mutual) jeers.
+**Questioning.** You talk about something you find strange or curious about, ask for information or an opinion, or express doubts about a topic.
+**Rude:** You talk about something unpleasant, in a sarcastic or dismissive tone, etc. Unlike with the Aggressive tone, this rudeness doesn't need to be pointed to the NPC, especially in the case of a friend: you can use it to express anger about something in a not-so-subtle way. An equally rude answer by the NPC, thus, could be interpreted as agreement in some cases; it still counts as an unpleasant exchange, unless you both really needed to vent for a while!
+**Sad.** You talk about something sad, or express condolences to the NPC. It can also express melancholy, regret, etc.
+**Surprised.** You talk about something you find surprising, baffling, strange, etc. You can also use this tone when you want to mystify the NPC…or when you have been quite mystified yourself.
+**Worried:** You talk about something that worries or even scares you. You can also use this tone to express concerns about the NPC's situation, or to give a warning.
+
+The following two tones have special rules regarding their availability. You only include them in the Tone Deck if the NPC you are talking to passes their respective requisites, and if you want to include them to begin with. Each of these tones, regardless of the reaction, cannot be used again with the same NPC for a time, so you would not include that specific card in the Tone Deck again for that NPC until then.
+
+**Flirting.** You show attraction to the NPC or try to attract them. Mostly for amusement, rather than with serious intentions... but who knows? You can only include this tone in the deck when talking with an NPC with an Attitude 'Unfriendly' or better.
+**Romantic:** You try to have a special moment with your partner; the details are left to yourself. You can only include this tone in the deck when you're talking with an NPC you have a romance, something that should have been established during the game or being a part of the character's background.
+
+Finally, the next two tones are only used with some of the options described in the following sections. Note that the first one doesn't have an associated card, because that's the point of that tone.
+
+**Err...hmm...** You found yourself with nothing to say, because you cannot use any of the three Tone cards you drew. Expect looking a bit silly for a moment.
+**Wildcard.** This tone is equivalent to another one. This will make that tone more likely to appear during the Dialogue and may even force you to use it in certain circumstances.
+
+Regarding NPC reactions, there are sixteen possibilities, being as versatile as tones, and which also depend on the context: a good friend may react to a joke with a loud laugh, while an enemy may just limit to an 'okay, that was funny' comment. Or vice versa, depending on their personalities!
+
+**Disagreement.** The NPC objects to your words or actions, but not vehemently. Depending on the NPC's Attitude and Mood, this can take the form of a blunt 'no', sarcasm/irony, or a polite 'let's agree to disagree'.
+**Flirting.** The NPC is receptive, and flirts with you in turn! Once again, nothing serious… or is it?
+**Furious:** The NPC is really pissed off. The Dialogue immediately ends badly. This is the worst possible outcome, so don't expect anything good coming from it.
+**Happy.** The NPC likes a lot what you are saying, sharing their good feelings.
+**Helpful.** The NPC offers (or accepts) to help you, by answering your questions, giving advice, soothing your worries, etc.
+**Hostile:** The NPC is now angry. Best case, the NPC is angry about the same thing that angered you the first time. But chances are, the NPC is angry with you, even if still willing to talk.
+**Malevolent.** The NPC feels pleased... at your expense; expect plenty of schadenfreude, with the 'schaden' pointing in your direction!
+**Neutral:** The NPC feels unimpressed, indifferent, too baffled to give a proper answer, or tries to temporize. It can also be a mixed-bag, alternating between different reactions and balancing each other.
+**Questioning.** The NPC wants to know more about what you're saying, feels curious, has some doubts that wants to clear up, etc.
+**Reject.** Uh-oh... wrong moment or, in some cases, wrong person. The NPC is not receptive to your flirting or romantic words.
+**Romantic:** Your partner is also looking for a special moment. Again, the details are left to yourself.
+**Rude:** The NPC doesn't care about what you're saying, doesn't like it, or (best case) shares your anger when your rudeness was directed elsewhere.
+**Sad.** The NPC feels sad (or disappointed) for your words or behavior, expresses condolences, etc.
+**Satisfaction:** The NPC likes what you are saying or doing or, at least, politely agrees with you.
+**Surprised:** The NPC feels surprised by your words or shares your surprise.
+**Worried.** The NPC feels perturbed, worried, scared, or uneasy by your words or your actions during the Dialogue.
+
+--- Page Break ---
+EXCHANGES
+Dialogues are resolved by doing three Exchanges, tops. That should be enough to carry out any dialogue, as each one goes beyond a simple 'A says, B says': it can be (and usually is) a longer 'A says, B says, A says, B says...', until you decide to jump to the next Exchange. But don't cheat: the full Exchange must reflect the tone you selected and the reaction you got, so don't change its nature out of nowhere!
+
+**A) First Exchange.** Once the greeting part is finished, draw three tone cards from the Tone Deck, and select one of them, which will represent your tone in this Exchange. Once your tone is set, and to know the nature of the NPC’s answer, you make a 1d10 roll and check the result against the Reaction Roll Table. Based on the result and the Attitude of the NPC, the Reaction will be positive, somewhat positive, somewhat negative, or negative. The NPC Reaction Table tells what specific Reaction corresponds to your used tone, in the same order as mentioned: the positive Reaction being the first shown one, the somewhat positive ones the second, and so on. Beware that there are some incompatible tone and Attitude combinations, so if you draw the corresponding tone card, that Dialogue option will not be available (i.e., in a video game, it would be 'greyed out') and you'll have to choose between the other two cards (or the only one, in the most extreme case).
+
+**B) Second Exchange.** If you want to keep talking, you repeat the previous step by drawing three new Tone cards from your already reduced Tone Deck. Except if the NPC was Furious, because in that case the Dialogue is over… and maybe fists start talking.
+
+**C) Third Exchange.** You want more? Okay, no problem, draw another three Tone cards from your now nearly exhausted Tone Deck, and repeat the process. But try to tie everything up because this is the last Exchange!
+
+AFTERMATH
+Once the Dialogue ends, you should ask yourself if something has been said (or done) that could change the nature of the relation with the NPC. But remember that poorly chosen words (or well-chosen, when that's their goal) can quickly sour a relationship… while a few pretty words, even if welcomed, rarely are enough to improve it.
+
+Also, if the Dialogue ends because the NPC gets Furious, maybe it's time to put the Dialogue rules aside and dust off the combat rules from your system. Or the chasing rules, if you've just pissed off a very dangerous NPC. Just saying.
+
+--- Page Break ---
+OPTIONAL RULES
+PERSUADING
+If you want to persuade an NPC, ask for something, etc., you can use one of the following options:
+*   Make the Exchange represent the petition, and then use the 'persuasion' system of the game you're playing, giving it a bonus or a penalty depending on how well (or bad) the Exchange went.
+*   Once the Dialogue has finished, make a final check against the Reaction Roll Table, modifying the initial Attitude of the NPC for worse or better depending on how the dialogue went. Just interpret a positive result as a "Yes", a somewhat positive as a "Yes, but", a somewhat negative as a "No, but", and a negative as a "No".
+
+LYING
+If you want to lie during a Dialogue, play your tone card and then use one of the following options:
+*   Use any action resolution system based on the game you're playing (as your classical skill roll) to check if the NPC believes you or not.
+*   Base it just on the result in the Reaction Roll, so you are fully believed if the reaction is positive, you are barely believed if it is somewhat positive, and you are caught lying if it is somewhat negative or negative.
+
+In any case, if you are caught lying, the NPC reaction will be Rude instead of the default one for the tone you used, or Hostile/Furious if it was already one of those.
+
+THREE-SIDED DIALOGUES
+Now that you know how to talk to one NPC, let's see what happens when you're talking to more than one! Or, to be precise, to two NPCs: in theory, you could have a dialogue with even more characters, but if this were a Visual Novel the screen would be too cluttered... so let's play along with the metaphor and avoid doing it.
+
+Three-sided conversations work like a normal Dialogue, with just some little differences: each NPC may have different Attitudes, Topics, and Moods, and will make a different Reaction Roll to check their specific reaction. Also, if their Attitudes are different, they may have a different reaction even when they got the same result in the roll.
+
+As expected, things could get a little convoluted... but the good news is that the Dialogue is still limited to three Exchanges; the bad news is that you'll have to cram every line of dialogue into them as best as you can. The combination of this optional rule with others more complex ones, as the Advanced Moods (especially these ones, in fact) are left as an exercise for the reader. Ahem.
+
+WILDCARD TONE
+By default, LET’S TALK! gives equal odds to all tones being drawn from the deck, regardless of the PC's personality, social skills or how good (or bad) their day has been. Cue the Wildcard tone optional rule, which gives more weight to one specific tone and has some additional nifty effects. To be precise, 'Wildcard' is NOT a new tone by itself, but a new card that you include in the Tone Deck as usual and represents a second instance of another Tone card. Except the Err...hmm... one, if you're also using that soon-to-be-described optional rule: that would be silly.
+
+WILDCARD SELECTION
+There are three ways to select which existing tone is linked to the Wildcard one:
+*   **How you are.** With this option, you select your Wildcard tone during the creation of the PC, based on their background, personality, etc. Note that the same 'specialty tone' can mean different things for different characters, and not always for good: if you select 'Sad' as your Wildcard, this may mean that you're a bit of a crybaby… or a very empathic person; 'Rude' can mean that you're quite grumpy, or a total jerk, etc. As a narrative tool, you can decide changing your Wildcard Tone during the game if the events during it point to a dramatic change of heart, in any direction. You can even spend some time without a Wildcard Tone just to reflect those changes taking time to settle. In fact, you could assign the Err...hmm... tone to the Wildcard until then, because in this case it would not be silly at all, but dramatic: it would represent your inner emotional conflict and stuff.
+*   **How you feel.** Who said that a PC cannot feel as moody as an NPC? With this option, before starting the Dialogue, you select the nature of the Wildcard tone based on how you should feel at that moment, but before you roll the Mood of the NPC.
+*   **Both.** You can combine both options by selecting two or three tones as your usual ones. Then, you randomly (or knowingly) choose one of them as your Wildcard tone for each specific Dialogue, based on the current situation. Again, you must do it before rolling the Mood of the NPC.
+
+THE WILDCARD IN ACTION
+You treat the Wildcard tone as a duplicate of another tone card, which may allow you using the same tone twice in the same Dialogue if you draw it in different Exchanges (more on this in a moment). On the other hand, if you're lucky (?) and draw both the Wildcard Tone and the copied tone in the same Exchange, you must use that tone and skip the part where you make a Reaction Roll: just apply the Reaction you want among the four available! So yes, that means that maybe you as a player weren't too eager of using that tone… but you as the PC don't have any other option. Fair warning: if this means that you're forced to use a tone, but you cannot use it because it's not available for that NPC… well, time to apply that funny Err...hmm... Tone optional rule.
+
+Note that you can select the Flirting or Romantic tones as your Wildcard, but you still apply both their requisites and limitations. Thus, if you cannot include the original tone in the Tone Deck for whichever reason (the NPC doesn't pass the requisites, you've already used that tone with that NPC recently, etc.), you cannot include the Wildcard one either. Also, you can try being romantic or flirt twice in the same Dialogue if you draw the corresponding cards in different Exchanges, but only if the first time you use it gives you a somewhat positive or somewhat negative Reaction: if things worked really well or really bad the first time, there is no room for a second one!
+
+ERR…HMM… TONE
+This rule is an escape clause (or, to use programming lingo, an exception handler!) for those situations where you find yourself with three Tone cards in your hand during an Exchange and you cannot use any of them. That shouldn't happen with the RAW system, as the worst-case scenario (i.e., talking with a Very Unfriendly NPC and getting both the Charming and Friendly tones in the same Exchange) still leaves you with one usable tone. But once optional rules start piling up, as hinted just above, you may find yourself in one of those awkward situations. So, when this happens, just use the Err...hmm... tone as a default which, as expected, will make you look a bit silly.
+
+If you're using the Advanced Moods rules, there's another situation where you would apply this rule: you use the Err...hmm... tone if you try to play a tone card that ends up being unusable once the NPC Mood is revealed (because it's a restricted tone for that Mood, or because it's restricted by the modified level of the NPC Attitude). And, once again, you look a bit silly.
+
+PARTY DIALOGUES
+Dialogue rules assume that you as the PC would be the one talking, even when the PC is part of a group. There are alternatives, on the other hand, all based on assigning a Wildcard Tone to every NPC that's in the party (their 'favorite' one), but in some cases giving it a different meaning.
+
+**Let our spokesperson take care of this.** This is the simplest option. At the start of the Dialogue, select one spokesperson for the party, and use the rules as written from the point of view of that character.
+**Polite interruptions.** You still select one spokesperson, but when you draw a Wildcard Tone card, you can make any other member of the party intervene in that Exchange, using their assigned Wildcard Tone. If you don't, then the spokesperson will still be the one doing the talk, as usual.
+**Impolite interruption.** As the previous one, but in this case you cannot choose: someone else intervenes, period, using their 'favorite' tone. You may leave to chance who does that, or you may select the more fitting character. Note that if you draw both the Wildcard and the favorite Tone card of someone, that character would be quite fitting!
+
+HARDCORE MODE
+Do you want a challenge? What about, instead of drawing three new cards each Exchange, only using the three you draw at the start of the Dialogue? Once each, as usual? That's hardcore! This may put you in a very precarious position, and trying to end a Dialogue ASAP when there's some Tone you don't want to use at all. Also, it may put you in a position where you have a card, or several (or all, if you start piling up optional rules!) that you cannot use! Of course, there's the Err...Hmm Tone rule, but if you're playing in Hardcore Mode you should use a less punishing version of it: when you don't have any card you can use in your hand, you can discard one and draw another. Note that a) if the one you draw is still unusable, then Fate has spoken and you must 'use' it and activate the Err...Hmm Tone, and b) this clause can only be invoked when you know that you have no usable Tones, not when you use one and then it's revealed that you shouldn't have used it because you didn't read the room.
+
+Hardcore Mode is compatible with plenty of other optional Dialogue rules, but not all. For example, the 'reshuffle' special effect in the next section means little in Hardcore Mood: putting a card again in a deck you're NOT expected to use any more except in very specific cases (i.e., those 'draw another card instead of just using it' for the Err...Hmm Tone) doesn't sound as a big deal. And, once again, you look a bit silly. Finally, regarding the Party Dialogue options, its 'polite interruption' version would give you a breather, as drawing the Wildcard gives you several options (one for each different Wildcard tone in your party); you decide if this is still hardcore enough or not.
+
+--- Page Break ---
+ADVANCED MOODS
+This section offers a series of additional optional rules regarding one specific topic: NPC Moods and their effect.
+
+READING THE ROOM
+By default, you assign a Mood to an NPC during the Greetings phase of the Dialogue, but you can use this little change instead: before assigning it, make an appropriate skill roll, test, or whatever would fit the game system you're playing:
+*   If you succeed: You assign the Mood of the NPC before the Dialogue starts.
+*   If you barely succeed: Make a Mood Roll, selecting two different Moods from the same column. You won't know which one is the right one until you have played your first tone card.
+*   If you fail: You just get a general idea of how good or crappy is the NPC Mood: make a Mood Roll, but just to check the column. Don't roll for the row until you have played your first tone card.
+*   If you fail by a high margin, fumble, etc.: Nope, you read nothing. Don't make the Mood Roll until you have played your first tone card.
+
+ASSIGNING MOODS
+In this section, you'll find different ways to assign a Mood to an NPC that make the whole process a bit less random…or even quite predictable, in some cases! As each method has its own merits, you can apply them on a case-by-case basis, instead of limiting yourself to just one.
+
+PERSONALITY MOODS
+A Mood can be interpreted as a default state: how an NPC feels and acts when there's no circumstance modifying it. In the case of an NPC you have just met and who's a stranger, you should assign it at random and let it be. Just note it down, nevertheless, in case you meet the same NPC later: that would be a good time to decide if that original Mood was just a temporary thing, or if it was a case of the NPC showing their true colors from the very beginning.
+
+Reading the room: If you're using this option to assign a Mood, you can apply the 'reading the room' optional rule as written.
+
+CIRCUMSTANTIAL MOODS
+An NPC who is being affected by some circumstances, especially if you were involved in them, may have a mood be based on them. In this case, you may still roll for a random Mood, but with the clause 'it cannot be better / worse that X' added to it. Or you may select the two or three more likely Moods and choose one of them at random.
+
+Example I: if you meet a security guard who's a total stranger, and they've caught you red-handed in a restricted place, the best-case scenario is that guard being Suspicious (hey, maybe there's a reason for you being there, after all!). So you may roll for a Mood, but if you get anything that sounds better than Suspicious you would default to that instead.
+Example II: if you have recently betrayed someone, best case would be that person being Skeptical. Worst case scenario…well, you could probably imagine that! So, for that NPC, you would roll for a Mood, and if it sounds better than Skeptical you would default to that one instead.
+Example III: if you have recently saved someone's life, that person should feel at the very least Pleased with you. That is, if that NPC isn't an ungrateful curmudgeon… but, even in that case, it may be just a case of 'I'm thankful to you but I don't want to make it too evident'. So, you may roll for a Mood, and if you get anything that sounds worse than Pleased, you should default to that.
+Example IV: you pay a visit to a scholar friend because you need help translating a mysterious clay scripture. Something that sounds like 'Choucroute Fun Tag,' but you may be reading it wrong. Problem is, it's 2:00 AM, so you wake up your friend. You can expect them to feel Inquisitive (as in, interested in the topic), Sleepy, or Grumpy. Giving a 1/3 chance to each of those Moods seems a fair option, then.
+
+Reading the room: If you're using this option to assign a Mood you should apply a binary version of the 'reading the room' optional rule. I.e., any success lets you assign the mood before the Dialogue starts, and any failure only lets you assign it once you have selected your first tone.
+
+ATTITUDE MOODS
+When an NPC already knows you, they may put aside their problems for a moment when seeing a friendly face (hey, maybe that's just what the NPC needed if they were feeling blue!) or put on guard as soon as they see you walk through the door. Thus, your mutual relationship can be used as a guideline to decide the mood of that NPC during the Dialogue. Just use the Mood Roll (Attitude) version of the table, checking the more fitting column and rolling only for the row. The repertoire of potential moods, in this case, is somewhat limited: as mentioned, it's assumed that minor matters would be put aside.
+
+Reading the room: If you're using this option to assign a Mood, you already know what column you're rolling in. So, apply the 'reading the room' rules as written, but any failure leaves you with no further information.
+
+MECHANICAL EFFECTS
+By default, an NPC Mood is a narrative tag that helps you when you want to roleplay that NPC during a Dialogue. This optional rule, on the other hand, gives a mechanical effect to every possible Mood. All 50 of them; it may sound a bit overkill, but remember that you'll only have to apply one Mood each time, and that their effects follow a similar formatting… so it should not be too overwhelming. Nevertheless, don't forget the roleplaying aspect: these mechanical effects are meant to add to it, not just replace it!
+
+Below, you'll find the description of the different mechanical effects of each Mood. As you would see, some effects are applied for the full Dialogue, while others have a limited duration; regardless of the case, all the mentioned durations apply to all the included effects in that Mood.
+
+Example: the Charming Mood reads as "+1 Charming and +1 Flirting and +1 Romantic until getting a Furious, Hostile, Reject, or Rude reaction." This means that the three mentioned tones get that bonus until you get any one of the four mentioned Reactions.
+
+Also, for those cases where the effects apply until getting (or after getting) some specific reaction from that NPC, note that a) those reactions can come from any tone, and not just those affected by that specific Mood, and b) any change will be applied in the next Exchange, and not the current one.
+
+Example: if you get a Satisfaction reaction from an Angry NPC, that NPC wouldn't be Angry any more… but this only takes effect in the following Exchange, not in the one you got this.
+
+Finally, don't expect too much balance in these effects: there are some Moods that could be seen as 'better' than others… as it should be!
+
++1/-1 MODIFIER
+These effects improve or worsen in one step, respectively, the NPC Attitude for specific tones, for all of them, etc. Thus, a Friendly NPC who gets a +1 would be treated as Very Friendly, a Neutral NPC who gets a -1 would be treated as Unfriendly etc. If you get a +1 when the Attitude is already Very Friendly, then you can ignore the Reaction Roll: just select what's the reaction of the NPC among the four possible outcomes. Conversely, if you get a -1 when the Attitude is already Very Unfriendly, then you automatically get the Negative reaction (i.e., the fourth and worst of all!).
+
+Note that these bonus or penalties only apply in the Exchange they're activated, but they don't carry out to the next one. E.g., if you use a Sad tone with an Empathic NPC, you treat their Attitude as one step better for that Exchange, but this does not apply to further ones.
+Example: back to the Charming Mood, if you try to flirt with a Neutral NPC, you'll roll and check columns as if that NPC was Friendly. If the NPC Rejects your flirting, on the other hand, you lose that bonus for the rest of the Dialogue.
+Example: the Stubborn Mood reads as "-1 to all tones until the end of the Dialogue after getting a Disagreement, Furious, Hostile, or Rude reaction". This means you initially don't apply any penalty because of this mood… but if you get one of those listed reactions, you'll suffer that -1 penalty for the rest of Exchanges. I.e., once the NPC enters a negative state of mind, it's hard to overcome it!
+
+RESHUFFLE
+When a Mood tells you to reshuffle a tone, you include it again in the Tone Deck after you draw it during a Dialogue once you resolve the Exchange (regardless of if you used that card or not), but only the first time this happens. This also applies to the Wildcard tone if it's imitating the mentioned tone! On the other hand, if you just draw both the Wildcard and its linked tone card in one go, you just reshuffle the latter but not the former.
+
+Example: NPCs who feel Jokey are in the proper mood for funny comments. Thus, the first time you draw the Humorous card in an Exchange, you put it back in the Tone Deck. And if Humorous is your Wildcard Tone… well, with a bit of luck you may end up playing that tone a whooping three times!
+
+RESTRICT
+A Mood may lock a tone, making it unavailable during that Dialogue. You still include its card in the Tone Deck, if it's one of the nine 'always present' tones. Also, as mentioned, if you must use that tone because you get both its card and the Wildcard linked to it in the same Exchange, you just use the Err...hmm tone instead.
+Example: when NPCs feel Sleepy, they're not predisposed to shocking revelations, so you cannot use the Surprise Tone with them. Pesky nitpickers…
+
+SHIFT OTHERS
+Improve or worsen in one step one of the four possible reactions, as in from Positive to Somewhat positive, or Negative to Somewhat negative. If you could select the reaction because you played both a tone and its linked Wildcard, first select the reaction and then shift it.
+
+Example: Nitpicking NPCs tend to look for any minor fault in your words and magnify them. Thus, any time you roll a somewhat negative Reaction for them, the result is treated as a negative Reaction instead. Also, note that this effect has no duration set, so it applies to all the Dialogue.
+
+There are Moods with effects that don't fit the already described ones. With a bit of luck, they'll be self-explanatory enough.
+Example: A Tired NPC isn't for a long talk, so the Dialogue will have, at most, two Exchanges. Of course, you should consider this when playing those Exchanges, making them also brief.
+
+MOODS EFFECTS
+**Angry.** -1 to every tone until getting a Flirting, Happy, Helpful, Romantic, or Satisfaction reaction.
+**Arrogant.** -1 Rude and Restrict Charming until getting a Flirting, Happy, Helpful, Romantic, or Satisfaction reaction.
+**Bold.** -1 Aggressive and -1 Rude for all the Dialogue.
+**Bored.** -1 Charming and Restrict Surprised until getting a Flirting, Romantic or Surprised reaction.
+**Caring.** +1 Sad and +1 Worried until getting a Furious, Hostile, or Rude reaction.
+**Charming.** +1 Charming and +1 Flirting and +1 Romantic until getting a Furious, Hostile, Reject, or Rude reaction.
+**Chatty.** +1 Questioning and +1 Surprised for all the Dialogue.
+**Clueless.** +1 Worried and Restrict Questioning for all the Dialogue.
+**Defiant.** -1 Rude and Restrict Friendly for all the Dialogue.
+**Diplomatic.** Shift all Somewhat negative reactions to Somewhat positive until getting a Furious, Hostile, or Rude reaction.
+**Dreamy.** +1 Friendly and +1 Charming until getting a Furious, Hostile, Reject, Rude, Sad, or Worried reaction.
+**Dubitative.** -1 Charming and +1 Questioning for all the Dialogue.
+**Egotist.** -1 Worried and Restrict Sad for all the Dialogue.
+**Empathic.** +1 Sad and +1 Worried for all the Dialogue.
+**Envious.** -1 Friendly and Restrict Charming for all the Dialogue.
+**Excited.** Shift all Somewhat positive reactions to Positive, and all Somewhat negative reactions to Negative for all the Dialogue.
+**Fair.** This mood has no mechanical effects. It's fair!
+**Fastidious.** -1 Sad and -1 Worried until getting a Sad or Worried reaction.
+**Gossipy.** +1 Questioning and Reshuffle Questioning for all the Dialogue.
+**Grumpy.** -1 to all tones until getting a Flirting, Happy, Helpful, Romantic, or Satisfaction reaction.
+**Happy.** +1 to all tones until getting a Furious, Hostile, Reject, Rude, Sad, or Worried reaction.
+
+--- Page Break ---
+**Harsh.** -1 to all tones for the rest of the Dialogue after getting a Disagreement, Furious, Hostile, Reject, or Rude reaction.
+**Helpful.** +1 Sad and +1 Worried until getting a Furious, Hostile, or Rude reaction.
+**Humble.** +1 to all tones in the first Exchange of the Dialogue.
+**Impatient.** -1 to all tones in the second and third Exchange.
+**Inquisitive.** +1 Questioning for all the Dialogue.
+**Ironic:** -1 for all tones until getting a Furious, Hostile, or Rude reaction.
+**Jokey.** +1 Humorous and Reshuffle Humorous for all the Dialogue.
+**Negotiator.** For all the Dialogue, -1 to every tone in the next Exchange after getting a Negative reaction and +1 to every tone in the next Exchange after getting a Positive reaction.
+**Nitpicking.** Shift all Somewhat positive reactions in the Dialogue to Somewhat negative.
+**Overwhelmed.** +1 Rude and +1 Aggressive for all the Dialogue.
+**Pacific.** +1 Rude and Restrict Aggressive for all the Dialogue.
+**Patient.** Shift all Negative reactions to Somewhat negative for all the Dialogue.
+**Placative.** +1 Aggressive and +1 Rude until getting a Furious, Hostile, or Rude reaction.
+**Pleased.** +1 to all tones until getting a Disagreement, Furious, Hostile, Reject, Rude, Sad, or Worried reaction.
+**Pragmatic.** Shift the first Positive reaction during the Dialogue to Somewhat positive, and the first Negative reaction to Somewhat negative.
+**Proud.** -1 to every tone for the rest of the Dialogue after getting a Disagreement, Furious, Hostile, Reject, or Rude reaction.
+**Sad.** +1 Sad and Restrict Humorous until getting a Flirting, Happy, Romantic, or Satisfaction reaction.
+**Sarcastic.** -1 for all tones until getting a Flirting, Happy, Helpful, Romantic, or Satisfaction reaction.
+**Scared.** +1 Worried and Reshuffle Worried for all the Dialogue.
+**Self-absorbed.** -1 Sad and Restrict Worried until getting a Sad, Surprised, or Worried reaction.
+**Skeptical.** -1 to all tones in the first Exchange of the Dialogue.
+**Sleepy.** -1 Questioning and Restrict Surprised for all the Dialogue.
+**Somber.** +1 Worried and Restrict Humorous for all the Dialogue.
+**Startled.** +1 Surprised for all the Dialogue and Reshuffle Surprised.
+**Strict.** Shift all Somewhat negative reactions to Negative for all the Dialogue.
+**Stubborn.** -1 to all tones until the end of the Dialogue after getting a Disagreement, Furious, Hostile, or Rude reaction.
+**Suspicious.** In the first Exchange of the Dialogue, shift a Somewhat positive reaction to Somewhat negative, and a Positive reaction to Somewhat positive.
+**Sympathetic.** +1 Friendly and Reshuffle Friendly until getting a Furious, Hostile, or Rude reaction.
+**Tired.** Automatically ends the Dialogue after the second Exchange.
+
+--- Page Break ---
+CHOUCROUTE FUN TAG! - A FULL DIALOGUE EXAMPLE
+For this final section, one of the previous mini-examples has been retaken and turned into a full-fledged example. There's no prize for guessing which one, because (well, duh!) that title above already spoiled the answer!
+
+This example includes some optional rules: namely, the Wildcard Tone and the Advanced Moods. It also includes some discussion about the interpretation of the results, and how to take advantage of them to introduce plot elements, background, story hooks, etc. But you can take this last part with a grain of salt: it's a personal interpretation, after all!
+
+THE STORY SO FAR…
+This Dialogue is played in the context of a solo roleplaying session with a light-tone (even tongue-in-cheek at times), and a modern-day, pulp-adventure setting. There is no need to specify what RPG is being used: let's just say it's one of those roll-under % systems, with some leeway in the form of some rule-of-cool/lucky-points to avoid the protagonist from dying an ignoble death or going nuts too early.
+
+This way, our daring explorer and protagonist Dora E. Thurston (yep, I know no shame) has found a clay tablet with a mysterious inscription among the belongings of her recently deceased old uncle. She needs help to translate it, so she knocks on the door of her friend Norbert Longdam (nope, sir, no shame at all) at 2:00 AM. Not the best hour for an erudite exchange, but whatever.
+
+It's assumed that Dora has a Friendly relationship with Longdam and that her Wildcard Tone is Questioning, representing her curious and inquisitive nature—the same nature that moves her to knock on someone's door at 2:00 AM to ask some erudite questions!
+
+Oh, and by the way: this example is going to be written assuming that Dora is both the player and the character of the game. She seems to be trying one of those 'role-play-yourself' thingies…
+
+GREETINGS
+There is no need to roll for a topic because Dora is the one approaching Longdam, so that topic is already known: Dora wants to talk about that inscription. Now, with respect to Longdam’s Mood, it will be based on the current context: friendly or not, being woken up at 2:00 AM isn't a pleasant experience! So it's assumed he can react by being Inquisitive, Sleepy or Grumpy, with same odds for each option.
+
+Dora, wisely, tries to read the room before saying anything: she successfully makes a Perception skill roll on the original system, so she will know that Mood from the very beginning. After rolling 1d3 (details are left as an exercise for the reader), the result is that Longdam is feeling Sleepy. All of this means that Dora must apply a -1 to the Attitude level when she uses the Questioning tone (Longdam is in no mood for debating now... which isn't good news, being this Dora's goal, and looking at her Wildcard Tone!), and she cannot use the Surprised tone (Longdam is too sleepy to feel surprised by anything). From a narrative perspective, nevertheless, Longdam should be roleplayed as a friendly scholarly dude who's feeling sleepy at that moment, and that should be considered when interpreting (and writing down) his reactions.
+
+<KNOCK KNOCK>
+Longdam: What...what's happening?! Has the Pope been murdered? Again? Who has been this...? Oh. It's you. I should have imagined that...
+Dora: Hi, Norbert! Don't worry, the Pope is fine. As far as I know, I mean! I came to ask you about something else, but it's also interesting! (^ ▽ ^)
+Longdam: So interesting that it couldn't wait until, you know, tomorrow morning? Well, today morning, at this point? (￢ ￢)
+Dora: Hmm...yes. Or so I hope! (^ ▽ ^)
+
+FIRST EXCHANGE
+Dora shuffles the nine basic tone cards plus the Wildcard Tone one. She could include the Flirting tone in the deck, but it doesn't seem to be a good time for it. Also, Dora suspects she will end up playing second fiddle in the story if she flirts with Longdam: for such a nerdy guy, he always manages to meet a 'girl of the week' each time he gets involved in a big adventure!
+
+Dora draws three cards and gets the following tones: Wildcard, Aggressive and Surprised. She cannot play the third one. And sure as heck she doesn't want to play the second! Only option left is, thus, the Wildcard… which in her case means using the Questioning tone. Of course, this means she gets a penalty, but it's still a lesser evil.
+
+After rolling a d10 in the Reaction Roll, Dora gets a 4. She must check the 'Neutral' column instead of the 'Friendly' one because of that pesky -1 penalty… which, in this case, doesn't matter too much, as both have the same results: a 'somewhat negative' Reaction. And for a Neutral NPC (in this case, there is a difference compared to a Friendly one) and a Questioning tone, the Reaction Table gives a 'Neutral' result. Longdam isn't going to vehemently react in any direction, then; nevertheless, note that it still has been a poor result.
+
+Dora: I have found this clay tablet as part of my old uncle's most recent research. The one he was doing just before he died, I mean. But I cannot make head or tails of this text, and I think it could be important...
+Longdam: [YAWN] Hmm, how strange. It seems a mix of several pictograms from different sources. But it looks like an attempt at a phonetic transcription.
+Dora: That's what I thought, too! But, as far as I can get, this would sound something like... CHOUCROUTE FUN TAG...
+Longdam: That's a... uh... quite liberal interpretation of the symbols, I would dare to say... ( . . )
+Dora: I know! It doesn't make any sense! What could sauerkraut have to do with all of this?
+
+--- Page Break ---
+SECOND EXCHANGE
+Dora draws three new tone cards from the (now smaller) deck. This time, she gets Rude, Questioning and Charming.
+
+Once again, Rude is a big no-no. She could use it to vent about something she finds annoying or infuriating instead of directing that rudeness to her friend (unlike the Aggressive tone, which always points to the listener), but it doesn't look like a fitting time to do that. With respect to Questioning, she could assume that penalty again, but twice in a row seems a bit too much. So she selects Charming to flatter her friend a bit. What could possibly go wrong?
+
+The result in the d10 in the Reaction Roll is a 1. Which means that she gets the worst possible reaction, negative: for the used tone and a Friendly NPC, is Neutral, again. So that was what could go wrong, then…
+
+Dora: Nevertheless, you're one of the best experts in the field, so you were the first one I thought about to help with this!
+Longdam: Wait, is this going to be like that time in Cambodia, then? I would prefer not to get involved in another diplomatic incident…
+Dora: What?!? No, it's nothing like that! And that wasn't my fault at all, I was framed!
+Longdam: Yes, sorry, I remember now. I shouldn't have mentioned it. I blame sleep deprivation.
+
+As can be seen, a Neutral Reaction doesn't need to be just a 'meh, whatever', even if it could be. In this case, it's been a mix of pointing-finger and sorry-for-pointing-fingers, balancing each other. With a pinch of passive-aggressiveness at the end, but who could blame him?
+
+Also, all that stuff about 'a time in Cambodia', 'being framed', etc., could be a reference to something that happened during a previous session, or just something made up on the spot. The latter, in turn, could be just some 'noodle incident' no one wants to talk about again. But if this adventure takes Dora to Southeast Asia, this comment in passing could be used to… hmm… ensue some hilarity.
+
+INTERLUDE
+Until this point, the Dialogue hasn't gone too well for Dora. As she's talking with a friend (even if a sleepy one!), it's not a disaster because there's been no adversarial reaction from Longdam… but no encouraging ones, either. So, Dora decides she should already check if she gets what she came for, by using a Persuasion skill roll in the original ruleset. For fairness sake, she applies a -15% penalty to that roll because of all bad rolls for Reactions until now: a penalty that system suggests as 'relevant but not overwhelming', which seems to fit the situation. Dora succeeds… but only by a tiny little bit.
+
+Checking the rules of that RPG, that should be interpreted as a 'success with a cost' or as a 'yes, but…'. So she selects the second option: she gets what she came for (Longdam's help), but not exactly the way she likes.
+
+Longdam: Okay, I admit this looks interesting enough, so I'm going to give it a try...
+Dora: Excellent! Let's…!
+Longdam: ...in the morning.
+Dora: In the morning?!? But...
+Longdam: No buts! I'll work on this after I wake up, first thing in the morning before going to work. But now, I need to sleep. Because I must go to work.
+Dora: …Okay, that's fair. More than fair, even. Thank you.
+
+Note that Dora hasn't explicitly asked for anything in this little exchange (and Exchange), because the petition was already made. This way, you can see everything that came before during the Dialogue as a way to decide if that skill roll you already had in mind would eventually deserve a bonus or a penalty.
+
+THIRD EXCHANGE
+Time to wrap everything up because Dora hasn't finished yet. She draws three cards from the nearly exhausted Tone Deck, and gets Sad, Worried and Friendly. This last one seems fitting enough… but, for fun and giggles, she decides to use the Worried one. In a bit sui generis way, as it'll be seen.
+
+And at last, Dora is lucky and gets a 9 on the Reaction Roll: a positive Reaction (hey, better late than never!), which means a Helpful reaction from Longdam!
+
+Longdam: So, it's a deal, we'll see again in the…
+Dora: Wait, are you kicking me out? At this time of night?!?
+Longdam: (O__O)!!!
+Dora: I mean… it's well past 2:00 AM. It's cold… and I could run into a robber… (´o ︵ o`)
+[BEAT]
+Longdam: HA HA HA! I pity the fool who would try to rob you! Okay, just to save that poor wretch from being punched in the face, you can stay in the guest room. But, just for the record: you know no shame. Also, don't expect me to prepare the room: I'm going to sleep, for good!
+Dora: Yay! Thank you, Norbert! (^ ^)
+
+How much of Dora's concerns were real and how much they were a pose is left as an exercise for the reader, too. Point is, even if all this sounded a lot like another petition from Dora, this time she decides to solve it just by using the rolled reaction. She counted on getting a good result, after two bad Reaction Rolls in a row; that was gambler's fallacy working at its best, but who cares? And getting a Helpful reaction seems auspicious enough, in that sense, so there's no need for another Persuasion skill roll and stuff.
+
+AFTERMATH
+Dora doesn't feel the Dialogue should change the nature of her relationship with Longdam: it all has been just a friendly exchange between two people who are already friends. So she readies to stay over at Longdam's place, until they wake up in the morning to study that clay tablet. Let's just hope that, during that night, the house isn't assaulted by some members of the Cult of Choucroute... or however you should pronounce that!
+
+--- Page Break ---
+TOPIC ROLL 1d10
+**TOPIC**
+1-2 The NPC just wants to say 'Hi!'
+3-4 The NPC brings some news.
+5-6 The NPC wants to remind you something.
+7-8 The NPC has a petition or a demand.
+9-10 The NPC brings an opportunity.
+
+MOOD ROLL 2D10
+|      | 1-2        | 3-4          | 5-6         | 7-8        | 9-10      |
+| :--- | :--------- | :----------- | :---------- | :--------- | :-------- |
+| 1    | Angry      | Bored        | Chatty      | Diplomatic | Caring    |
+| 2    | Arrogant   | Dubitative   | Gossipy     | Bold       | Charming  |
+| 3    | Defiant    | Nitpicking   | Impatient   | Clueless   | Empathic  |
+| 4    | Egotist    | Overwhelmed  | Ironic      | Dreamy     | Excited   |
+| 5    | Envious    | Proud        | Negotiator  | Fair       | Happy     |
+| 6    | Fastidious | Sarcastic    | Self-absorbed | Humble     | Helpful   |
+| 7    | Grumpy     | Scared       | Sleepy      | Inquisitive | Pacific   |
+| 8    | Harsh      | Skeptical    | Somber      | Jokey      | Patient   |
+| 9    | Sad        | Startled     | Strict      | Pleased    | Placative |
+| 10   | Suspicious | Stubborn     | Tired       | Pragmatic  | Sympathetic |
+
+REACTION ROLL 1d10
+|      | Very Unfriendly | Unfriendly      | Neutral         | Friendly        | Very Friendly |
+| :--- | :-------------- | :-------------- | :-------------- | :-------------- | :------------ |
+| 1-2  | Negative        | Negative        | Negative        | Negative        | Negative      |
+| 3-4  | Negative        | Somewhat negative | Somewhat negative | Somewhat negative | Somewhat negative |
+| 5-6  | Somewhat negative | Somewhat negative | Somewhat positive | Somewhat positive | Somewhat positive |
+| 7-8  | Somewhat positive | Somewhat positive | Somewhat positive | Somewhat positive | Positive      |
+| 9-10 | Positive        | Positive        | Positive        | Positive        | Positive      |
+
+MOOD ROLL (ATTITUDE) 1D10
+|      | Very Unfriendly | Unfriendly    | Neutral       | Friendly      | Very Friendly |
+| :--- | :-------------- | :------------ | :------------ | :------------ | :------------ |
+| 1    | Angry           | Angry         | Grumpy        | Nitpicking    | Self-absorbed |
+| 2    | Defiant         | Harsh         | Suspicious    | Dubitative    | Inquisitive   |
+| 3    | Harsh           | Grumpy        | Impatient     | Self-absorbed | Pragmatic     |
+| 4    | Arrogant        | Suspicious    | Nitpicking    | Chatty        | Chatty        |
+| 5    | Grumpy          | Ironic        | Self-absorbed | Inquisitive   | Fair          |
+| 6    | Suspicious      | Skeptical     | Fair          | Fair          | Patient       |
+| 7    | Sarcastic       | Impatient     | Negotiator    | Patient       | Empathic      |
+| 8    | Skeptical       | Dubitative    | Pragmatic     | Empathic      | Sympathetic   |
+| 9    | Dubitative      | Negotiator    | Diplomatic    | Sympathetic   | Helpful       |
+| 10   | Pragmatic       | Pragmatic     | Empathic      | Helpful       | Caring        |
+
+NPC REACTION
+| TONE        | Very Unfriendly | Unfriendly | Neutral | Friendly | Very Friendly |
+| :---------- | :-------------- | :--------- | :------ | :------- | :------------ |
+| **Aggressive** | Disagreement / Hostile / Furious / Furious | Disagreement / Hostile / Hostile / Furious | Hostile / Hostile / Furious / Furious | Hostile / Hostile / Furious / Furious | Hostile / Hostile / Furious / Furious |
+| **Charming** | (Not Available) | Neutral / Disagreement / Reject / Reject | Neutral / Disagreement / Reject / Reject | Flirting / Flirting / Reject / Reject | Flirting / Flirting / Reject / Reject |
+| **Friendly** | (Not Available) | Neutral / Disagreement / Hostile / Hostile | Neutral / Neutral / Hostile / Hostile | Helpful / Satisfaction / Disagreement / Disagreement | Helpful / Helpful / Satisfaction / Satisfaction |
+| **Humorous** | Neutral / Neutral / Hostile / Furious | Neutral / Neutral / Hostile / Furious | Neutral / Neutral / Rude / Rude | Happy / Satisfaction / Rude / Rude | Happy / Happy / Satisfaction / Satisfaction |
+| **Questioning** | Neutral / Neutral / Hostile / Furious | Neutral / Neutral / Hostile / Hostile | Neutral / Neutral / Hostile / Hostile | Questioning / Questioning / Hostile / Hostile | Questioning / Questioning / Hostile / Hostile |
+| **Rude**      | Rude / Rude / Rude / Hostile | Rude / Rude / Hostile / Hostile | Rude / Rude / Hostile / Hostile | Rude / Rude / Disagreement / Hostile | Rude / Rude / Disagreement / Hostile |
+| **Sad**       | Neutral / Neutral / Hostile / Furious | Neutral / Neutral / Hostile / Hostile | Neutral / Neutral / Hostile / Hostile | Sad / Sad / Neutral / Neutral | Sad / Sad / Neutral / Neutral |
+| **Surprised** | Neutral / Neutral / Hostile / Furious | Neutral / Neutral / Hostile / Hostile | Neutral / Neutral / Hostile / Hostile | Surprised / Surprised / Neutral / Neutral | Surprised / Surprised / Neutral / Neutral |
+| **Worried**   | Worried / Worried / Hostile / Furious | Worried / Worried / Hostile / Hostile | Worried / Worried / Hostile / Hostile | Worried / Worried / Neutral / Neutral | Worried / Worried / Neutral / Neutral |
+| **Flirting**  | (Not Available) | Flirting / Flirting / Reject / Reject | Flirting / Flirting / Reject / Reject | Flirting / Flirting / Reject / Reject | Flirting / Flirting / Reject / Reject |
+| **Romantic**  | (Not Available) | (Not Available) | (Not Available) | Romantic / Romantic / Reject / Reject | Romantic / Romantic / Reject / Reject |
+
+REACTION ORDER: Positive / Somewhat Positive / Somewhat Negative / Negative
+
+--- END OF FILE lets tlk.txt ---
