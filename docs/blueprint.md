@@ -19,3 +19,9 @@
 - Body & UI Text: 'PT Sans' (sans-serif) — For modern, crisp, and highly readable interface text.
 - Utilize a simple, clear, and minimalist icon set (e.g., Feather Icons or Heroicons).
 - Assign icons to represent NPCs, factions, relationship statuses (e.g., a heart for Romance, chains for a Bond, a broken heart for Toxic), and dialogue tones to provide quick visual cues.
+
+## Rules Compliance & Verification
+
+- All automated behaviors, dice rolls, table lookups, and UI restrictions for "Keeping Contact!" and "Let's Talk!" must strictly follow the rules as written in the official reference documents (`reference_keeping-contact.md` and `reference_lets talk.md`).
+- Any optional rules implemented (e.g., Wildcard Tone, Hardcore Mode) must behave exactly as described in the source material.
+- The application must be verifiable against the reference documents, and any discrepancies must be documented and corrected to ensure full compliance.
