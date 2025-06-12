@@ -7,9 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Edit, Trash2, MessageSquare, Heart, Link2, AlertTriangle, Smile, Meh, Zap, ShieldAlert, Users } from 'lucide-react'; // Added Zap, ShieldAlert
-import { RELATIONSHIP_STATUS_ICONS, NPC_PLACEHOLDER_AVATAR } from '@/lib/constants';
-import { ATTITUDE_LEVELS } from '@/lib/constants';
+import { NPC_PLACEHOLDER_AVATAR } from '@/lib/constants';
 import { Progress } from "@/components/ui/progress";
+import { npcApprovesThat, npcDisapprovesThat, getConditionForAR, addCondition } from '@/lib/utils';
+import { useNpcs } from '@/contexts/NpcContext';
 
 
 interface NpcItemProps {
@@ -34,8 +35,8 @@ const getRelationshipIcon = (npc: NPC) => {
 };
 
 const AttitudeBar: React.FC<{ attitudeLevel: number }> = ({ attitudeLevel }) => {
-  const min = ATTITUDE_LEVELS.min;
-  const max = ATTITUDE_LEVELS.max;
+  const min = -10; // Assuming -10 is the minimum attitude level
+  const max = 10;  // Assuming 10 is the maximum attitude level
   const percentage = ((attitudeLevel - min) / (max - min)) * 100;
   
   let colorClass = "bg-primary"; // Default (cyan)
@@ -54,7 +55,28 @@ const AttitudeBar: React.FC<{ attitudeLevel: number }> = ({ attitudeLevel }) => 
 
 
 export const NpcItem: React.FC<NpcItemProps> = ({ npc, onEdit, onDelete, onStartDialogue }) => {
-  const factionIcon = npc.factionId ? <Users className="h-4 w-4 text-purple-500" title="Faction Member" /> : null;
+  const factionIcon = npc.factionId ? <Users className="h-4 w-4 text-purple-500" /> : null;
+  const [actionResult, setActionResult] = React.useState<string | null>(null);
+  const { updateNpc } = useNpcs();
+
+  // Handler for Approves That!
+  const handleApprove = () => {
+    const { ar, result } = npcApprovesThat(npc.ar);
+    let newConditions = [...npc.conditions];
+    const cond = getConditionForAR(ar);
+    if (cond && !newConditions.includes(cond)) newConditions = addCondition(newConditions, cond);
+    updateNpc(npc.id, { ar, conditions: newConditions });
+    setActionResult(`[NPC] Approves That! Result: ${result}`);
+  };
+  // Handler for Disapproves That!
+  const handleDisapprove = () => {
+    const { ar, result } = npcDisapprovesThat(npc.ar);
+    let newConditions = [...npc.conditions];
+    const cond = getConditionForAR(ar);
+    if (cond && !newConditions.includes(cond)) newConditions = addCondition(newConditions, cond);
+    updateNpc(npc.id, { ar, conditions: newConditions });
+    setActionResult(`[NPC] Disapproves That! Result: ${result}`);
+  };
 
   return (
     <Card className="mb-4 bg-card/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -98,10 +120,14 @@ export const NpcItem: React.FC<NpcItemProps> = ({ npc, onEdit, onDelete, onStart
         <Button variant="outline" size="sm" onClick={() => onStartDialogue(npc)}>
           <MessageSquare className="mr-2 h-4 w-4" /> Start Dialogue
         </Button>
-        <Button variant="outline" size="sm" disabled> {/* Placeholder for Approve/Disapprove */}
-          <Zap className="mr-2 h-4 w-4" /> Action
+        <Button variant="outline" size="sm" onClick={handleApprove}>
+          <Zap className="mr-2 h-4 w-4" /> Approves That!
+        </Button>
+        <Button variant="outline" size="sm" onClick={handleDisapprove}>
+          <ShieldAlert className="mr-2 h-4 w-4" /> Disapproves That!
         </Button>
         {/* Add more action buttons here: Create/Break Bond, Start/End Romance */}
+        {actionResult && <span className="text-xs text-muted-foreground ml-2">{actionResult}</span>}
       </CardFooter>
     </Card>
   );
