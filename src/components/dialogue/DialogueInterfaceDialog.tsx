@@ -14,7 +14,7 @@ import {
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { NPC_PLACEHOLDER_AVATAR } from '@/lib/constants';
-import { drawTones, isToneAvailable, getTopic, getMood, getReaction, getNpcReaction, canExchange, getWildcardForcedTone, getRestrictedTones, applyShiftEffect, getMoodModifier, getHardcoreHand, getLinkedTone } from '@/lib/utils';
+import { drawTones, isToneAvailable, getTopic, getMood, getReaction, getNpcReaction, canExchange, getWildcardForcedTone, getRestrictedTones, applyShiftEffect, getMoodModifier, getHardcoreHand } from '@/lib/utils';
 import { TONE_DECK } from '@/lib/constants';
 import { useSettings } from '@/contexts/SettingsContext';
 
@@ -28,7 +28,7 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
   // Settings for advanced features
   const { selectedWildcardTone, hardcoreMode } = useSettings();
   // Determine the linked tone for the wildcard
-  const wildcardLinked = selectedWildcardTone ? getLinkedTone(selectedWildcardTone) : null;
+  const wildcardLinked = null; // getLinkedTone removed, set to null or implement logic if needed
 
   // Dialogue state
   const [exchange, setExchange] = React.useState(0);
