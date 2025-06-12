@@ -110,11 +110,10 @@ export const MOOD_EFFECTS: Record<string, {
     { tone: "Flirting", value: 1, until: "Furious/Hostile/Reject/Rude" },
     { tone: "Romantic", value: 1, until: "Furious/Hostile/Reject/Rude" }
   ] },
-  "Empathic": { modifier: [
-    { tone: "Sad", value: 1 },
-    { tone: "Worried", value: 1 }
-  ] },
-  "Envious": { modifier: [{ tone: "Friendly", value: -1 }], restrict: ["Charming"] },
+  "Defiant": { modifier: [{ value: -1 }] },
+  "Diplomatic": { modifier: [{ value: 1 }] },
+  "Dubitative": { modifier: [{ value: -1 }] },
+  "Empathic": { modifier: [ { tone: "Sad", value: 1 }, { tone: "Worried", value: 1 } ] },
   "Excited": { shift: [
     { from: "Somewhat Positive", to: "Positive" },
     { from: "Somewhat Negative", to: "Negative" }
@@ -132,6 +131,7 @@ export const MOOD_EFFECTS: Record<string, {
     { tone: "Sad", value: 1, until: "Furious/Hostile/Rude" },
     { tone: "Worried", value: 1, until: "Furious/Hostile/Rude" }
   ] },
+  "Hostile": { restrict: ["Friendly", "Charming"] },
   "Humble": { modifier: [{ value: 1, until: "FirstExchange" }] },
   "Impatient": { modifier: [{ value: -1, until: "SecondThirdExchange" }] },
   "Inquisitive": { modifier: [{ tone: "Questioning", value: 1 }] },
@@ -174,5 +174,29 @@ export const MOOD_EFFECTS: Record<string, {
   ] },
   "Sympathetic": { modifier: [{ tone: "Friendly", value: 1, until: "Furious/Hostile/Rude" }], reshuffle: ["Friendly"] },
   "Tired": { restrict: ["AllAfterSecondExchange"] },
+  "Cheerful": { modifier: [{ value: 1 }] },
+  "Worried": { modifier: [{ tone: "Worried", value: 1 }] },
+  "Surprised": { reshuffle: ["Surprised"] },
+  "Aggressive": { modifier: [{ tone: "Aggressive", value: 1 }] },
+  "Polite": { modifier: [{ value: 1 }] },
+  "Reserved": { restrict: ["Charming", "Flirting"] },
+  "Tense": { restrict: ["Humorous"] },
+  "Optimistic": { modifier: [{ value: 1 }] },
+  "Pessimistic": { modifier: [{ value: -1 }] },
+  "Cautious": { restrict: ["Aggressive"] },
+  "Curious": { modifier: [{ tone: "Questioning", value: 1 }] },
+  "Supportive": { modifier: [{ value: 1 }] },
+  "Jealous": { modifier: [{ tone: "Friendly", value: -1 }], restrict: ["Charming"] },
+  "Playful": { reshuffle: ["Humorous"] },
+  "Annoyed": { modifier: [{ value: -1 }] },
+  "Calm": { modifier: [{ value: 1 }] },
+  "Distracted": { restrict: ["Questioning"] },
+  "Focused": { modifier: [{ value: 1 }] },
+  "Lonely": { modifier: [{ tone: "Friendly", value: 1 }] },
+  "Confident": { modifier: [{ value: 1 }] },
+  "Shy": { restrict: ["Flirting"] },
+  "Bored": { modifier: [{ value: -1 }] },
+  "Trusting": { modifier: [{ value: 1 }] },
+  "Untrusting": { modifier: [{ value: -1 }] },
   // ...add more as needed for full coverage
 };
