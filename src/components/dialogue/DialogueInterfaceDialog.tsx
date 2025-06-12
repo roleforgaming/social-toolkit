@@ -14,7 +14,7 @@ import {
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { NPC_PLACEHOLDER_AVATAR } from '@/lib/constants';
-import { drawTones, isToneAvailable, getTopic, getMood, getReaction, getNpcReaction, canExchange } from '@/lib/utils';
+import { drawTones, isToneAvailable, getTopic, getMood, getReaction, getNpcReaction, canExchange, getWildcardForcedTone, getRestrictedTones, applyShiftEffect, getMoodModifier, getHardcoreHand } from '@/lib/utils';
 import { TONE_DECK } from '@/lib/constants';
 
 interface DialogueInterfaceDialogProps {
@@ -24,21 +24,29 @@ interface DialogueInterfaceDialogProps {
 }
 
 export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = ({ npc, open, onOpenChange }) => {
+  // Settings for advanced features (could come from context/settings)
+  const wildcardTone = "Sarcastic"; // Example: player chose Sarcastic as Wildcard
+  const wildcardLinked = "Humorous"; // Example: linked to Humorous
+  const hardcoreMode = false; // Set true to test Hardcore Mode
+
   // Dialogue state
   const [exchange, setExchange] = React.useState(0);
   const [history, setHistory] = React.useState<{tone: string, reaction: string, outcome: string}[]>([]);
   const [tones, setTones] = React.useState<string[]>([]);
+  const [usedTones, setUsedTones] = React.useState<string[]>([]);
   const [chosenTone, setChosenTone] = React.useState<string | null>(null);
   const [reaction, setReaction] = React.useState<string | null>(null);
   const [outcome, setOutcome] = React.useState<string | null>(null);
   const [topic, setTopic] = React.useState<string>('');
   const [mood, setMood] = React.useState<string>('');
+  const [forcedTone, setForcedTone] = React.useState<string | null>(null);
 
-  // Helper: filter tone deck for optional tones
+  // Helper: filter tone deck for optional tones and mood restrictions
   function getAvailableToneDeck() {
     return (TONE_DECK as unknown as string[]).filter(tone => {
       if (tone === 'Flirting' && npc.attitudeLevel < -1) return false;
       if (tone === 'Romantic' && !npc.isRomance) return false;
+      if (getRestrictedTones(mood).includes(tone)) return false;
       return true;
     });
   }
@@ -51,9 +59,18 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
       setChosenTone(null);
       setReaction(null);
       setOutcome(null);
+      setUsedTones([]);
       setTopic(getTopic(true)); // Assume player initiates for now
-      setMood(getMood(npc.attitudeLevel));
-      setTones(drawTones(getAvailableToneDeck()));
+      const m = getMood(npc.attitudeLevel);
+      setMood(m);
+      // Draw initial hand (Hardcore: persistent, else per exchange)
+      const deck = getAvailableToneDeck();
+      if (hardcoreMode) {
+        setTones(drawTones(deck));
+      } else {
+        setTones(drawTones(deck));
+      }
+      setForcedTone(null);
     }
   }, [open]);
 
@@ -61,18 +78,48 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
   const handleToneSelection = (tone: string) => {
     if (!isToneAvailable(tone, npc) || !canExchange(exchange)) return;
     setChosenTone(tone);
-    // Mood effect placeholder: could modify outcome here
-    const outcome = getReaction(npc.attitudeLevel);
-    setOutcome(outcome);
+    setUsedTones(prev => [...prev, tone]);
+    // Wildcard logic: if forced, skip reaction roll
+    if (forcedTone && tone === forcedTone) {
+      setOutcome('Wildcard');
+      setReaction('Choose any reaction!');
+      setHistory(h => [...h, { tone, reaction: 'Choose any reaction!', outcome: 'Wildcard' }]);
+      setExchange(e => e + 1);
+      // Remove wildcard/linked from deck for next exchange
+      if (exchange < 2) {
+        const deck = getAvailableToneDeck().filter(t => t !== wildcardTone && t !== wildcardLinked);
+        setTones(drawTones(deck, [...usedTones, tone]));
+      }
+      return;
+    }
+    // Mood modifier
+    const mod = getMoodModifier(mood, tone);
+    // Reaction outcome (with modifier)
+    let outcome = getReaction(npc.attitudeLevel + mod);
+    // Mood shift effect
+    outcome = applyShiftEffect(mood, outcome);
     const npcReact = getNpcReaction(tone, outcome);
+    setOutcome(outcome);
     setReaction(npcReact);
     setHistory(h => [...h, { tone, reaction: npcReact, outcome }]);
     setExchange(e => e + 1);
-    // Draw new tones for next exchange if not last
+    // Remove used tone for next exchange (Hardcore: persistent hand)
     if (exchange < 2) {
-      setTones(drawTones(getAvailableToneDeck(), [tone]));
+      let deck = getAvailableToneDeck();
+      if (hardcoreMode) {
+        deck = getHardcoreHand(deck, [...usedTones, tone]);
+      }
+      setTones(drawTones(deck, [...usedTones, tone]));
     }
   };
+
+  // Wildcard Tone: check if forced selection is needed
+  React.useEffect(() => {
+    if (tones.length > 0) {
+      const forced = getWildcardForcedTone(tones, wildcardTone, wildcardLinked);
+      setForcedTone(forced);
+    }
+  }, [tones]);
 
   // Reset chosenTone/reaction for next exchange
   React.useEffect(() => {
@@ -101,7 +148,8 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
           </div>
           <DialogTitle className="font-headline text-2xl">Dialogue with {npc.name}</DialogTitle>
           <DialogDescription>
-            Topic: {topic} | Mood: {mood}
+            Topic: {topic} | Mood: {mood} {forcedTone && <span className="text-pink-500">(Wildcard: must select {forcedTone})</span>}
+            {hardcoreMode && <span className="ml-2 text-orange-500">[Hardcore Mode]</span>}
           </DialogDescription>
         </DialogHeader>
         <div className="py-6 space-y-4">
@@ -121,8 +169,8 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
             <div className="flex flex-wrap gap-2">
               {tones.map(tone => (
                 <Button key={tone} variant="outline" onClick={() => handleToneSelection(tone)}
-                  disabled={!isToneAvailable(tone, npc) || !!chosenTone || !canExchange(exchange)}
-                  className={!isToneAvailable(tone, npc) ? 'opacity-50 cursor-not-allowed' : ''}
+                  disabled={Boolean(!isToneAvailable(tone, npc) || chosenTone || !canExchange(exchange) || (forcedTone && tone !== forcedTone))}
+                  className={!isToneAvailable(tone, npc) || (forcedTone && tone !== forcedTone) ? 'opacity-50 cursor-not-allowed' : ''}
                 >
                   {tone}
                 </Button>
