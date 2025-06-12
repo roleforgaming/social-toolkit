@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { TOPIC_ROLL_TABLE, MOOD_ROLL_TABLE, REACTION_ROLL_TABLE, NPC_REACTION_TABLE } from './constants';
+import { TOPIC_ROLL_TABLE, MOOD_ROLL_TABLE, REACTION_ROLL_TABLE, NPC_REACTION_TABLE, MOOD_EFFECTS } from './constants';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -189,6 +189,52 @@ export function isToneAvailable(tone: string, npc: any): boolean {
   // Charming/Friendly not with Very Unfriendly
   if ((tone === 'Charming' || tone === 'Friendly') && npc.attitudeLevel <= -2) return false;
   return true;
+}
+
+// Wildcard Tone logic
+export function getWildcardForcedTone(tones: string[], wildcard: string, linked: string): string | null {
+  // If both the wildcard and its linked tone are in the hand, force the linked tone
+  if (tones.includes(wildcard) && tones.includes(linked)) return linked;
+  return null;
+}
+
+// Mood effect: restrict
+export function getRestrictedTones(mood: string): string[] {
+  const effect = MOOD_EFFECTS[mood];
+  return effect?.restrict || [];
+}
+
+// Mood effect: shift
+export function applyShiftEffect(mood: string, outcome: string): string {
+  const effect = MOOD_EFFECTS[mood];
+  if (effect?.shift) {
+    for (const s of effect.shift) {
+      if (s.from === outcome) return s.to;
+    }
+  }
+  return outcome;
+}
+
+// Mood effect: modifier (returns value to add to attitudeLevel for reaction roll)
+export function getMoodModifier(mood: string, tone: string): number {
+  const effect = MOOD_EFFECTS[mood];
+  if (effect?.modifier) {
+    for (const m of effect.modifier) {
+      if (!m.tone || m.tone === tone) return m.value;
+    }
+  }
+  return 0;
+}
+
+// Mood effect: reshuffle (returns tones to reshuffle)
+export function getReshuffleTones(mood: string): string[] {
+  const effect = MOOD_EFFECTS[mood];
+  return effect?.reshuffle || [];
+}
+
+// Hardcore Mode: manage persistent hand
+export function getHardcoreHand(deck: string[], used: string[]): string[] {
+  return deck.filter(t => !used.includes(t));
 }
 
 // Get topic (player chooses or roll 1d10)
