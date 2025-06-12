@@ -28,7 +28,7 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
   // Settings for advanced features
   const { selectedWildcardTone, hardcoreMode } = useSettings();
   // Determine the linked tone for the wildcard
-  const wildcardLinked = null; // getLinkedTone removed, set to null or implement logic if needed
+  const wildcardLinked: string | null = null; // or implement logic if needed
 
   // Dialogue state
   const [exchange, setExchange] = React.useState(0);
@@ -117,7 +117,7 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
   // Wildcard Tone: check if forced selection is needed
   React.useEffect(() => {
     if (tones.length > 0) {
-      const forced = getWildcardForcedTone(tones, selectedWildcardTone, wildcardLinked);
+      const forced = getWildcardForcedTone(tones, selectedWildcardTone ?? '', wildcardLinked ?? '');
       setForcedTone(forced);
     }
   }, [tones]);
