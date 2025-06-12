@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { TOPIC_ROLL_TABLE } from './constants';
+import { TOPIC_ROLL_TABLE, MOOD_ROLL_TABLE, REACTION_ROLL_TABLE, NPC_REACTION_TABLE } from './constants';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -198,20 +198,32 @@ export function getTopic(playerInitiates: boolean, chosen?: string): string {
   return TOPIC_ROLL_TABLE[roll - 1];
 }
 
-// Placeholder: Get mood (roll 2d10, lookup table)
-export function getMood(): string {
-  // TODO: Implement full 2d10 mood table lookup
-  return 'Neutral';
+// Get mood (roll 2d10, lookup table)
+export function getMood(attitudeLevel: number = 0): string {
+  // Clamp attitudeLevel to -2..+2, map to 0..4
+  const col = Math.max(0, Math.min(4, attitudeLevel + 2));
+  const [row1] = roll2d10();
+  const row = Math.max(0, Math.min(9, row1 - 1));
+  return MOOD_ROLL_TABLE[row][col];
 }
 
-// Placeholder: Get reaction (roll 1d10, lookup table)
-export function getReaction(): string {
-  // TODO: Implement full reaction table logic
+// Get reaction outcome (Positive, Somewhat Positive, etc.)
+export function getReaction(attitudeLevel: number): string {
+  // Clamp attitudeLevel to -2..+2, map to 0..4
+  const col = Math.max(0, Math.min(4, attitudeLevel + 2));
   const roll = roll1d10();
-  if (roll >= 8) return 'Positive';
-  if (roll >= 5) return 'Somewhat Positive';
-  if (roll >= 3) return 'Somewhat Negative';
-  return 'Negative';
+  // Find outcome for this attitude/column
+  return REACTION_ROLL_TABLE[col][roll - 1];
+}
+
+// Get NPC reaction word (cross-reference tone and outcome)
+export function getNpcReaction(tone: string, outcome: string): string {
+  // outcome: "Positive", "Somewhat Positive", "Somewhat Negative", "Negative"
+  const idx = ["Positive", "Somewhat Positive", "Somewhat Negative", "Negative"].indexOf(outcome);
+  if (NPC_REACTION_TABLE[tone] && idx >= 0) {
+    return NPC_REACTION_TABLE[tone][idx];
+  }
+  return outcome;
 }
 
 // Track dialogue exchanges (max 3)
