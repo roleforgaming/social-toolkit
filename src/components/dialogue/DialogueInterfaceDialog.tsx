@@ -14,8 +14,9 @@ import {
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { NPC_PLACEHOLDER_AVATAR } from '@/lib/constants';
-import { drawTones, isToneAvailable, getTopic, getMood, getReaction, getNpcReaction, canExchange, getWildcardForcedTone, getRestrictedTones, applyShiftEffect, getMoodModifier, getHardcoreHand } from '@/lib/utils';
+import { drawTones, isToneAvailable, getTopic, getMood, getReaction, getNpcReaction, canExchange, getWildcardForcedTone, getRestrictedTones, applyShiftEffect, getMoodModifier, getHardcoreHand, getLinkedTone } from '@/lib/utils';
 import { TONE_DECK } from '@/lib/constants';
+import { useSettings } from '@/contexts/SettingsContext';
 
 interface DialogueInterfaceDialogProps {
   npc: NPC;
@@ -24,10 +25,10 @@ interface DialogueInterfaceDialogProps {
 }
 
 export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = ({ npc, open, onOpenChange }) => {
-  // Settings for advanced features (could come from context/settings)
-  const wildcardTone = "Sarcastic"; // Example: player chose Sarcastic as Wildcard
-  const wildcardLinked = "Humorous"; // Example: linked to Humorous
-  const hardcoreMode = false; // Set true to test Hardcore Mode
+  // Settings for advanced features
+  const { selectedWildcardTone, hardcoreMode } = useSettings();
+  // Determine the linked tone for the wildcard
+  const wildcardLinked = selectedWildcardTone ? getLinkedTone(selectedWildcardTone) : null;
 
   // Dialogue state
   const [exchange, setExchange] = React.useState(0);
@@ -87,7 +88,7 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
       setExchange(e => e + 1);
       // Remove wildcard/linked from deck for next exchange
       if (exchange < 2) {
-        const deck = getAvailableToneDeck().filter(t => t !== wildcardTone && t !== wildcardLinked);
+        const deck = getAvailableToneDeck().filter(t => t !== selectedWildcardTone && t !== wildcardLinked);
         setTones(drawTones(deck, [...usedTones, tone]));
       }
       return;
@@ -116,7 +117,7 @@ export const DialogueInterfaceDialog: React.FC<DialogueInterfaceDialogProps> = (
   // Wildcard Tone: check if forced selection is needed
   React.useEffect(() => {
     if (tones.length > 0) {
-      const forced = getWildcardForcedTone(tones, wildcardTone, wildcardLinked);
+      const forced = getWildcardForcedTone(tones, selectedWildcardTone, wildcardLinked);
       setForcedTone(forced);
     }
   }, [tones]);
