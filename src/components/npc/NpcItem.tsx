@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Edit, Trash2, MessageSquare, Heart, Link2, AlertTriangle, Smile, Meh, Zap, ShieldAlert, Users } from 'lucide-react'; // Added Zap, ShieldAlert
 import { NPC_PLACEHOLDER_AVATAR } from '@/lib/constants';
 import { Progress } from "@/components/ui/progress";
-import { npcApprovesThat, npcDisapprovesThat, getConditionForAR, addCondition } from '@/lib/utils';
+import { npcApprovesThat, npcDisapprovesThat, getConditionForAR, addCondition, updateRelationship, createBond, breakBond, startRomance, endRomance } from '@/lib/utils';
 import { useNpcs } from '@/contexts/NpcContext';
 
 
@@ -78,6 +78,45 @@ export const NpcItem: React.FC<NpcItemProps> = ({ npc, onEdit, onDelete, onStart
     setActionResult(`[NPC] Disapproves That! Result: ${result}`);
   };
 
+  // Handler for Update Relationships
+  const handleUpdateRelationship = () => {
+    const { attitudeLevel, ar, conditions, result } = updateRelationship(npc);
+    updateNpc(npc.id, { attitudeLevel, ar, conditions });
+    setActionResult(`Update Relationships: ${result}`);
+  };
+
+  // Handler for Create Bond
+  const handleCreateBond = () => {
+    const { success, roll, result, arMin } = createBond(npc);
+    if (success) {
+      updateNpc(npc.id, { isBonded: true, ar: Math.max(npc.ar, arMin), conditions: npc.conditions, attitudeLevel: npc.attitudeLevel });
+    }
+    setActionResult(`Create Bond: ${result} (Roll: ${roll})`);
+  };
+
+  // Handler for Break Bond
+  const handleBreakBond = () => {
+    const { roll, result } = breakBond(npc);
+    updateNpc(npc.id, { isBonded: false });
+    setActionResult(`Break Bond: ${result} (Roll: ${roll})`);
+  };
+
+  // Handler for Start Romance
+  const handleStartRomance = () => {
+    const { success, roll, result } = startRomance(npc);
+    if (success) {
+      updateNpc(npc.id, { isRomance: true, attitudeLevel: 0 });
+    }
+    setActionResult(`Start Romance: ${result} (Roll: ${roll})`);
+  };
+
+  // Handler for End Romance
+  const handleEndRomance = () => {
+    const { roll, result } = endRomance(npc);
+    updateNpc(npc.id, { isRomance: false });
+    setActionResult(`End Romance: ${result} (Roll: ${roll})`);
+  };
+
   return (
     <Card className="mb-4 bg-card/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
       <CardHeader className="flex flex-row items-start space-x-4 pb-3 pt-4 px-4">
@@ -126,7 +165,21 @@ export const NpcItem: React.FC<NpcItemProps> = ({ npc, onEdit, onDelete, onStart
         <Button variant="outline" size="sm" onClick={handleDisapprove}>
           <ShieldAlert className="mr-2 h-4 w-4" /> Disapproves That!
         </Button>
-        {/* Add more action buttons here: Create/Break Bond, Start/End Romance */}
+        <Button variant="outline" size="sm" onClick={handleUpdateRelationship}>
+          Update Relationships
+        </Button>
+        <Button variant="outline" size="sm" onClick={handleCreateBond} disabled={npc.isBonded}>
+          Create Bond
+        </Button>
+        <Button variant="outline" size="sm" onClick={handleBreakBond} disabled={!npc.isBonded}>
+          Break Bond
+        </Button>
+        <Button variant="outline" size="sm" onClick={handleStartRomance} disabled={npc.isRomance}>
+          Start Romance
+        </Button>
+        <Button variant="outline" size="sm" onClick={handleEndRomance} disabled={!npc.isRomance}>
+          End Romance
+        </Button>
         {actionResult && <span className="text-xs text-muted-foreground ml-2">{actionResult}</span>}
       </CardFooter>
     </Card>

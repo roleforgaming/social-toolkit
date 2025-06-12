@@ -1,0 +1,222 @@
+# Comprehensive Code Review: "Solo RPG Companion" vs. Rulebooks
+Below is a structured review of the application's implementation, referencing the rulebooks (reference_lets talk.md, reference_keeping-contact.md) and the codebase. This review covers core mechanics, state management, dice logic, table lookups, and both "Keeping Contact!" and "Let's Talk!" systems.
+
+1. Core System Mechanics
+1.1 State Management
+Rulebook Reference:
+
+reference_keeping-contact.md > ATTITUDE TRAIT(S)
+reference_lets talk.md > GETTING STARTED
+Code Reference:
+
+core.ts
+NpcContext.tsx
+Findings:
+
+Implemented Correctly (Partial):
+NPCs have attitudeLevel, ar (Approval Rating), conditions, isBonded, isRomance, and relationshipStage.
+Factions have ar and memberIds.
+Discrepancy:
+The attitudeLevel range in code is -10 to 10, but the rules specify -2 to +2 for Attitude Level and -4 to +6 for AR by default.
+conditions is a string array, but the rules only allow "Stressed", "Pleased", or both.
+Suggested Fix:
+Restrict attitudeLevel to -2 to +2 and ar to -4 to +6 by default, unless Bond/Romance modifies it.
+Enforce allowed values for conditions (enum or validation).
+1.2 Dice Roll Implementation
+Rulebook Reference:
+
+reference_keeping-contact.md > AR CHANGES, UPDATE RELATIONSHIPS, CREATE BOND, START ROMANCE
+reference_lets talk.md > MOOD ROLL, REACTION ROLL
+Code Reference:
+
+No explicit dice roll utility found in the reviewed files.
+Findings:
+
+Missing:
+No evidence of a central dice-rolling utility (e.g., roll1d6, roll2d6, roll2d10).
+No code for applying modifiers (Attitude, AR, Mood, etc.) to dice rolls.
+Suggested Fix:
+Implement a dice utility with support for modifiers and ensure all actions use it.
+1.3 Table Lookups & Mapping
+Rulebook Reference:
+
+reference_lets talk.md > MOOD ROLL, REACTION ROLL, NPC REACTION
+reference_keeping-contact.md > FIRST IMPRESSIONS, BACKSTORY, ATTITUDE MEANINGS
+Code Reference:
+
+constants.ts (partial lists)
+No evidence of full table data or lookup logic.
+Findings:
+
+Partially Implemented:
+Some constants for topics, moods, tones exist, but not the full tables.
+No code for mapping dice results to table outcomes.
+Suggested Fix:
+Implement all tables as data structures and provide lookup functions.
+1.4 Condition Application & Removal
+Rulebook Reference:
+
+reference_keeping-contact.md > ACQUIRING CONDITIONS, UPDATE RELATIONSHIPS
+Code Reference:
+
+core.ts (conditions field)
+No logic found for automatic application/removal.
+Findings:
+
+Missing:
+No code for automatically setting "Pleased" at AR max or "Stressed" at AR min, or for clearing conditions on relationship update.
+Suggested Fix:
+Add logic to update conditions when AR crosses thresholds and during relationship updates.
+2. "LET'S TALK!" System
+2.1 Dialogue Flow
+Rulebook Reference:
+
+reference_lets talk.md > THE SYSTEM, GREETINGS, EXCHANGES, AFTERMATH
+Code Reference:
+
+DialogueInterfaceDialog.tsx (UI only, no logic)
+core.ts (DialogueEncounter type)
+Findings:
+
+Partially Implemented:
+UI for dialogue exists, but logic for greetings, topic/mood roll, and exchanges is missing.
+No enforcement of three-exchange limit.
+Suggested Fix:
+Implement dialogue state machine: greetings (attitude, topic, mood), exchanges (draw/select tones, roll reaction), aftermath.
+2.2 Tone Deck & Availability
+Rulebook Reference:
+
+reference_lets talk.md > TONES & REACTIONS, Tone Availability Rules
+Code Reference:
+
+constants.ts (BASE_TONES, WILDCARD_TONES)
+DialogueInterfaceDialog.tsx (hardcoded tone list)
+Findings:
+
+Incorrectly Implemented:
+Tone deck is hardcoded, not dynamically built per rules (e.g., Flirting/Charming only for certain attitudes).
+No disabling of restricted tones in UI.
+Suggested Fix:
+Build tone deck per dialogue, enforce availability rules, and disable restricted tones in UI.
+2.3 Mood & Reaction Logic
+Rulebook Reference:
+
+reference_lets talk.md > MOOD ROLL, REACTION ROLL, NPC REACTION
+Code Reference:
+
+No evidence of mood/reaction table logic.
+Findings:
+
+Missing:
+No code for rolling 2d10 for mood, 1d10 for reaction, or mapping to tables.
+No logic for mood effects (e.g., shifting reactions, restricting tones).
+Suggested Fix:
+Implement mood/reaction roll logic and table lookups, including advanced mood effects.
+2.4 Optional Rules
+Rulebook Reference:
+
+reference_lets talk.md > Wildcard Tone, Hardcore Mode, Advanced Moods, Party Dialogues
+Code Reference:
+
+core.ts (DialogueSettings: wildcard, hardcoreMode)
+No logic found for these rules.
+Findings:
+
+Partially Implemented:
+Settings exist, but no enforcement in dialogue logic.
+Suggested Fix:
+Implement logic for Wildcard Tone, Hardcore Mode, and advanced/optional rules.
+3. "KEEPING CONTACT!" System
+3.1 Attitude, AR, and Conditions
+Rulebook Reference:
+
+reference_keeping-contact.md > ATTITUDE TRAIT(S), AR CHANGES, ACQUIRING CONDITIONS
+Code Reference:
+
+core.ts, NpcContext.tsx
+Findings:
+
+Partially Implemented:
+Data fields exist, but logic for AR/condition changes is missing.
+Suggested Fix:
+Add logic for AR changes, condition acquisition/removal, and enforce limits.
+3.2 Relationship Actions
+Rulebook Reference:
+
+reference_keeping-contact.md > [NPC] APPROVES THAT!, [NPC] DISAPPROVES THAT!, UPDATE RELATIONSHIPS, CREATE BOND, START ROMANCE
+Code Reference:
+
+No evidence of these actions in code.
+Findings:
+
+Missing:
+No code for these core actions, dice rolls, or their effects.
+Suggested Fix:
+Implement all relationship actions per rules, including cooldowns and prerequisites.
+3.3 Bonds, Romance, and Stages
+Rulebook Reference:
+
+reference_keeping-contact.md > RELATIONSHIP STAGES, BONDS, ROMANCE
+Code Reference:
+
+isBonded, isRomance fields in NPC
+Findings:
+
+Partially Implemented:
+Flags exist, but no logic for bond/romance creation, AR limit changes, or romance-specific AR/roll bonuses.
+Suggested Fix:
+Implement bond/romance logic, including AR limit changes and special rules.
+3.4 Factions & NPC-NPC Interactions
+Rulebook Reference:
+
+reference_keeping-contact.md > FACTIONS, NPC-NPC INTERACTIONS
+Code Reference:
+
+Faction type, but no logic for actions.
+Findings:
+
+Missing:
+No code for faction actions, reputation, or NPC-NPC interaction actions.
+Suggested Fix:
+Implement faction and NPC-NPC interaction logic per rules.
+4. Table Data & Lookups
+Rulebook Reference:
+
+All tables in both rulebooks
+Code Reference:
+
+constants.ts (partial, incomplete)
+Findings:
+
+Missing:
+Most tables (e.g., Mood Roll, Reaction Roll, NPC Reaction) are not implemented as data or lookup functions.
+Suggested Fix:
+Add all tables as data and provide lookup utilities.
+5. UI/UX
+Findings:
+
+Partially Implemented:
+UI for listing NPCs, editing, and starting dialogue exists.
+Dialogue UI is placeholder; no dynamic state, dice, or table logic.
+Suggested Fix:
+Integrate backend logic for all actions, dice, and table lookups into UI.
+Summary Table
+Rule/Feature	Status	Discrepancy/Notes	Suggested Fix
+Attitude/AR/Conditions	Partially Implemented	Ranges/values not enforced, logic missing	Enforce ranges, add logic
+Dice Rolls	Missing	No dice utility or modifier logic	Implement dice utility
+Table Lookups	Missing	Most tables not implemented	Add tables and lookup functions
+Condition Logic	Missing	No auto-apply/remove for Pleased/Stressed	Add logic
+Dialogue Flow	Partially Implemented	UI only, no logic for greetings/exchanges/aftermath	Add dialogue state logic
+Tone Deck/Availability	Incorrectly Implemented	Hardcoded, not dynamic, no restrictions	Build deck per rules, restrict tones
+Mood/Reaction Logic	Missing	No mood/reaction roll or effect logic	Implement mood/reaction logic
+Relationship Actions	Missing	No code for Approves/Disapproves/Update/Bond/Romance	Implement all actions
+Bonds/Romance Benefits	Missing	No AR limit/bonus logic	Add bond/romance logic
+Factions/NPC-NPC Actions	Missing	No logic for faction/NPC-NPC actions	Implement per rules
+Optional Rules	Partially Implemented	Settings exist, no logic	Implement logic
+UI/UX Integration	Partially Implemented	UI present, no backend logic	Integrate logic into UI
+Critical Priorities
+Implement all dice roll and table lookup logic.
+Enforce correct ranges and allowed values for Attitude, AR, and Conditions.
+Add all core relationship and dialogue actions with correct rule logic.
+Integrate backend logic into the UI for a functional experience.
+If you want, I can begin implementing any of these missing or incorrect features. Please specify which area to prioritize, or if you want a step-by-step implementation plan.
